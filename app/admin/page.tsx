@@ -125,15 +125,19 @@ export default function AdminPage() {
     []
   )
 
-  const handleMatchResultUpdate = (index: number, field: string, value: string) => {
+  const handleMatchResultUpdate = (result: MatchResult, field: string, value: string) => {
     setMatchResults(prevResults => {
-      const newResults = [...prevResults]
-      newResults[index] = { 
-        ...newResults[index], 
-        [field]: ['team1', 'team2', 'day', 'sport'].includes(field) ? value : parseInt(value) || 0 
-      }
-      updateChangedMatchResults(newResults[index])
-      return newResults
+      return prevResults.map(r => {
+        if (r.id === result.id) {
+          const updatedResult = { 
+            ...r, 
+            [field]: ['team1', 'team2', 'day', 'sport'].includes(field) ? value : parseInt(value) || 0 
+          }
+          updateChangedMatchResults(updatedResult)
+          return updatedResult
+        }
+        return r
+      })
     })
   }
 
@@ -151,10 +155,9 @@ export default function AdminPage() {
     setChangedMatchResults(prevChanged => [...prevChanged, newMatch])
   }
 
-  const deleteMatch = (index: number) => {
-    const deletedMatch = matchResults[index]
-    setMatchResults(prevResults => prevResults.filter((_, i) => i !== index))
-    setChangedMatchResults(prevChanged => [...prevChanged, { ...deletedMatch, _delete: true }])
+  const deleteMatch = (result: MatchResult) => {
+    setMatchResults(prevResults => prevResults.filter(r => r.id !== result.id))
+    setChangedMatchResults(prevChanged => [...prevChanged, { ...result, _delete: true }])
   }
 
   const addNewStanding = () => {
@@ -170,10 +173,9 @@ export default function AdminPage() {
     setChangedStandings(prevChanged => [...prevChanged, newStanding])
   }
 
-  const deleteStanding = (index: number) => {
-    const deletedStanding = standings[index]
-    setStandings(prevStandings => prevStandings.filter((_, i) => i !== index))
-    setChangedStandings(prevChanged => [...prevChanged, { ...deletedStanding, _delete: true }])
+  const deleteStanding = (standing: Standing) => {
+    setStandings(prevStandings => prevStandings.filter(s => s.id !== standing.id))
+    setChangedStandings(prevChanged => [...prevChanged, { ...standing, _delete: true }])
   }
 
   const handleSave = async () => {
@@ -256,37 +258,37 @@ export default function AdminPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {standings.filter(team => team.sport === selectedSport).map((team, index) => (
-                <TableRow key={team.id || index}>
+              {standings.filter(team => team.sport === selectedSport).map((team) => (
+                <TableRow key={team.id}>
                   <TableCell>
                     <Input
                       value={team.teamName}
-                      onChange={(e) => handleStandingUpdate(index, 'teamName', e.target.value)}
+                      onChange={(e) => handleStandingUpdate(standings.indexOf(team), 'teamName', e.target.value)}
                     />
                   </TableCell>
                   <TableCell>
                     <Input
                       type="number"
                       value={team.wins}
-                      onChange={(e) => handleStandingUpdate(index, 'wins', e.target.value)}
+                      onChange={(e) => handleStandingUpdate(standings.indexOf(team), 'wins', e.target.value)}
                     />
                   </TableCell>
                   <TableCell>
                     <Input
                       type="number"
                       value={team.losses}
-                      onChange={(e) => handleStandingUpdate(index, 'losses', e.target.value)}
+                      onChange={(e) => handleStandingUpdate(standings.indexOf(team), 'losses', e.target.value)}
                     />
                   </TableCell>
                   <TableCell>
                     <Input
                       type="number"
                       value={team.points}
-                      onChange={(e) => handleStandingUpdate(index, 'points', e.target.value)}
+                      onChange={(e) => handleStandingUpdate(standings.indexOf(team), 'points', e.target.value)}
                     />
                   </TableCell>
                   <TableCell>
-                    <Button onClick={() => deleteStanding(index)} variant="destructive">
+                    <Button onClick={() => deleteStanding(team)} variant="destructive">
                       Delete
                     </Button>
                   </TableCell>
@@ -332,37 +334,37 @@ export default function AdminPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {matchResults.filter(result => result.day === selectedDay && result.sport === selectedSport).map((result, index) => (
-                <TableRow key={result.id || `${result.day}-${result.sport}-${result.team1}-${result.team2}`}>
+              {matchResults.filter(result => result.day === selectedDay && result.sport === selectedSport).map((result) => (
+                <TableRow key={result.id}>
                   <TableCell>
                     <Input
                       value={result.team1}
-                      onChange={(e) => handleMatchResultUpdate(index, 'team1', e.target.value)}
+                      onChange={(e) => handleMatchResultUpdate(result, 'team1', e.target.value)}
                     />
                   </TableCell>
                   <TableCell>
                     <Input
                       value={result.team2}
-                      onChange={(e) => handleMatchResultUpdate(index, 'team2', e.target.value)}
+                      onChange={(e) => handleMatchResultUpdate(result, 'team2', e.target.value)}
                     />
                   </TableCell>
                   <TableCell className="flex space-x-2">
                     <Input
                       type="number"
                       value={result.score1}
-                      onChange={(e) => handleMatchResultUpdate(index, 'score1', e.target.value)}
+                      onChange={(e) => handleMatchResultUpdate(result, 'score1', e.target.value)}
                       className="w-20"
                     />
                     <span className="flex items-center">-</span>
                     <Input
                       type="number"
                       value={result.score2}
-                      onChange={(e) => handleMatchResultUpdate(index, 'score2', e.target.value)}
+                      onChange={(e) => handleMatchResultUpdate(result, 'score2', e.target.value)}
                       className="w-20"
                     />
                   </TableCell>
                   <TableCell>
-                    <Button onClick={() => deleteMatch(index)} variant="destructive">
+                    <Button onClick={() => deleteMatch(result)} variant="destructive">
                       Delete
                     </Button>
                   </TableCell>
