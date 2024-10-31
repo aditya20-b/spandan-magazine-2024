@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Spandans Magazine',
-  description: 'Your sports event magazine',
+  title: "Spandan Magazine",
+  description: "Your sports event magazine by the Literary & Debating Society",
 };
 
 export default function RootLayout({

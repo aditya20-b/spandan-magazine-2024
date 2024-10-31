@@ -225,7 +225,7 @@ export function SpandansMagazineComponent() {
       <div className="relative z-10 flex-grow flex flex-col">
         <header className="bg-black/50 p-4">
           <h1 className="text-4xl font-bold text-center mb-4">
-            Spandans Magazine
+            Spandan Magazine
           </h1>
           <nav className="flex justify-between items-center">
             <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
@@ -238,7 +238,7 @@ export function SpandansMagazineComponent() {
                 <SheetHeader>
                   <SheetTitle className="text-red-50">Menu</SheetTitle>
                   <SheetDescription className="text-red-200">
-                    Navigate through different sections of Spandans Magazine
+                    Navigate through different sections of Spandan Magazine
                   </SheetDescription>
                 </SheetHeader>
                 <div className="mt-4 flex flex-col space-y-2">
@@ -317,7 +317,7 @@ export function SpandansMagazineComponent() {
         </main>
 
         <footer className="bg-black/50 p-4 text-center">
-          <p>&copy; 2024 Spandans Magazine. All rights reserved.</p>
+          <p>&copy; 2024 Spandan Magazine. All rights reserved.</p>
         </footer>
       </div>
     </div>
