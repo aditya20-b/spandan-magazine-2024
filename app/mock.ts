@@ -1,4 +1,4 @@
-import type { EventCategories, EventDetails, DayResults, ScoreData } from "@/app/types";
+import type { EventCategories, EventDetails, ScoreData } from "@/app/types";
 
 const events: Record<EventCategories, Record<string, string[]>> = {
   "Literary and Debate": {
@@ -94,7 +94,8 @@ const eventDetails: EventDetails = {
   // Add more event details here...
 };
 
-const dayResults: DayResults = {
+// TODO: Remove old mock data and cleanup
+const dayResults: Record<string, Record<string, { team1: string; team2: string; score1: number; score2: number }[]>> = {
   "Day 1": {
     Basketball: [
       { team1: "Team A", team2: "Team B", score1: 78, score2: 72 },
