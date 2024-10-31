@@ -4,13 +4,12 @@ import { open, type Database } from "sqlite";
 import type { Standing, MatchResult } from "@/app/types";
 import path from "path";
 
-
 let db: Database | null = null;
 
 async function openDb() {
   if (!db) {
     db = await open({
-      filename: path.resolve(__dirname, "spandans.db"),
+      filename: path.resolve(process.cwd(), "./spandans.db"),
       driver: sqlite3.Database,
     });
   }
