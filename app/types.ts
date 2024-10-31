@@ -20,16 +20,42 @@ type EventDetails = {
   };
 };
 
-type DayResults = {
-  [key: string]: {
-    [key: string]: {
-      team1: string;
-      team2: string;
-      score1: number;
-      score2: number;
-    }[];
-  };
+// type DayResults = {
+//   [key: string]: {
+//     [key: string]: {
+//       team1: string;
+//       team2: string;
+//       score1: number;
+//       score2: number;
+//     }[];
+//   };
+// };
+
+export type Standing = {
+  id?: number;
+  sport: string;
+  teamName: string;
+  wins: number;
+  losses: number;
+  points: number;
 };
 
+export type MatchResult = {
+  id?: number;
+  day: string;
+  sport: string;
+  team1: string;
+  team2: string;
+  score1: number;
+  score2: number;
+};
+
+
+
+type DayResults = {
+  [key: string]: {
+    [key: string]: MatchResult[]
+  }
+}
 
 export type { EventCategories, ScoreData, EventDetails, DayResults };
