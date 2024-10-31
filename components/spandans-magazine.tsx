@@ -31,7 +31,6 @@ import {
 import { events, dayResults, eventDetails, mockData } from "@/app/mock";
 
 const categories = ["Literary and Debate", "Culturals", "Sports", "Proshows"];
-
 const sportsWithScores = ["Basketball", "Cricket", "Football", "Futsal"];
 
 export function SpandansMagazineComponent() {
@@ -45,6 +44,8 @@ export function SpandansMagazineComponent() {
   const [scoreData, setScoreData] = useState<ScoreData>({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [backgroundImage, setBackgroundImage] = useState("/spooky.png");
+  const [selectedDay, setSelectedDay] = useState("Day 1");
 
   useEffect(() => {
     const fetchScoreData = async () => {
@@ -81,53 +82,117 @@ export function SpandansMagazineComponent() {
       );
     }
 
-    if (sportsWithScores.includes(selectedEvent)) {
-      const eventScores = scoreData[selectedEvent];
-      if (!eventScores || eventScores.length === 0) {
-        return <p>No scores available for this event.</p>;
-      }
+    const details = eventDetails[selectedEvent] || {
+      writeup: "Event details coming soon...",
+      image: "/spooky.png",
+    };
 
-      return (
-        <Table>
-          <TableCaption>{selectedEvent} Scores</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Team Name</TableHead>
-              <TableHead>Wins</TableHead>
-              <TableHead>Losses</TableHead>
-              <TableHead>Points</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {eventScores.map((team, index) => (
-              <TableRow key={index}>
-                <TableCell>{team.teamName}</TableCell>
-                <TableCell>{team.wins}</TableCell>
-                <TableCell>{team.losses}</TableCell>
-                <TableCell>{team.points}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      );
-    } else {
-      return (
-        <div>
-          <h3 className="text-xl font-semibold mb-2">{selectedEvent}</h3>
-          <p>
-            Event details will be updated here with information about the
-            winners and event description.
-          </p>
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col md:flex-row gap-6">
+          <img
+            src={details.image}
+            alt={selectedEvent}
+            className="w-full md:w-1/2 rounded-lg"
+          />
+          <div className="w-full md:w-1/2 space-y-4">
+            <h3 className="text-2xl font-bold">{selectedEvent}</h3>
+            <p>{details.writeup}</p>
+          </div>
         </div>
-      );
-    }
+
+        {sportsWithScores.includes(selectedEvent) ? (
+          <Tabs defaultValue="standings">
+            <TabsList>
+              <TabsTrigger value="standings">Standings</TabsTrigger>
+              <TabsTrigger value="results">Day-wise Results</TabsTrigger>
+            </TabsList>
+            <TabsContent value="standings">
+              <Table>
+                <TableCaption>{selectedEvent} Standings</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Team Name</TableHead>
+                    <TableHead>Wins</TableHead>
+                    <TableHead>Losses</TableHead>
+                    <TableHead>Points</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {scoreData[selectedEvent]?.map((team, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{team.teamName}</TableCell>
+                      <TableCell>{team.wins}</TableCell>
+                      <TableCell>{team.losses}</TableCell>
+                      <TableCell>{team.points}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TabsContent>
+            <TabsContent value="results">
+              <div className="space-y-4">
+                <div className="flex justify-center space-x-2">
+                  <div className="flex justify-center space-x-2">
+                    {Object.keys(dayResults).map((day) => (
+                      <Button
+                        key={day}
+                        variant={selectedDay === day ? "secondary" : "ghost"}
+                        onClick={() => setSelectedDay(day)}
+                        className={`${
+                          selectedDay === day
+                            ? "bg-red-900/50 text-red-50 border border-white"
+                            : "bg-red-700/30 hover:bg-red-700/50 text-red-50 border-none"
+                        }`}
+                      >
+                        {day}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+                <Table>
+                  <TableCaption>
+                    {selectedEvent} Results - {selectedDay}
+                  </TableCaption>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Team 1</TableHead>
+                      <TableHead>Team 2</TableHead>
+                      <TableHead>Score</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {dayResults[selectedDay][selectedEvent]?.map(
+                      (result, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{result.team1}</TableCell>
+                          <TableCell>{result.team2}</TableCell>
+                          <TableCell>
+                            {result.score1} - {result.score2}
+                          </TableCell>
+                        </TableRow>
+                      )
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </TabsContent>
+          </Tabs>
+        ) : (
+          <div className="bg-red-900/30 p-4 rounded-lg">
+            <h4 className="text-xl font-semibold mb-2">Event Results</h4>
+            <p>Results and winners will be announced here after the event.</p>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
     <div
       className="min-h-screen bg-no-repeat bg-cover bg-center bg-fixed text-red-50 flex flex-col"
       style={{
-        backgroundImage: `url('/spooky.png')`,
+        backgroundImage: `url('${backgroundImage}')`,
       }}
     >
       <div className="fixed inset-0 bg-cover bg-center z-0" />
