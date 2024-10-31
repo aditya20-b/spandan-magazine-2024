@@ -41,7 +41,16 @@ type MatchResult = {
   score2: number;
 };
 
-const sportsWithScores = ["Basketball", "Cricket", "Football", "Futsal"];
+const sportsWithScores = [
+  "Basketball (Men)",
+  "Basketball (Women)",
+  "Cricket",
+  "Football",
+  "Futsal",
+  "Hockey",
+  "Throwball",
+  "Volleyball"
+];
 const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"];
 
 export default function AdminPage() {

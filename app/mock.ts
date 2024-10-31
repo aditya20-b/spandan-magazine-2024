@@ -60,7 +60,8 @@ const events: Record<EventCategories, Record<string, string[]>> = {
   },
   Sports: {
     "Team Sports": [
-      "Basketball",
+      "Basketball (Men)",
+      "Basketball (Women)",
       "Cricket",
       "Football",
       "Futsal",
@@ -85,7 +86,7 @@ const eventDetails: EventDetails = {
     image: "/placeholder.svg?height=300&width=400",
   },
 
-  Basketball: {
+  "Basketball (Men)": {
     writeup:
       "Experience the thrill of fast-paced action on the court in our Basketball tournament.",
     image: "/placeholder.svg?height=300&width=400",
