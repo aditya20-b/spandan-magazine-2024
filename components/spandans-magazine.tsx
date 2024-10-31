@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Moon, Menu, Loader2, Calendar } from "lucide-react";
+import { Moon, Menu, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -21,17 +21,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  EventCategories,
-  EventDetails,
-  DayResults,
-  ScoreData,
-} from "@/app/types";
+import { EventCategories, ScoreData } from "@/app/types";
 
 import { events, dayResults, eventDetails, mockData } from "@/app/mock";
 
 const categories = ["Literary and Debate", "Culturals", "Sports", "Proshows"];
 const sportsWithScores = ["Basketball", "Cricket", "Football", "Futsal"];
+const backgroundImage = "/spooky.png";
 
 export function SpandansMagazineComponent() {
   const [selectedCategory, setSelectedCategory] = useState<EventCategories>(
@@ -44,7 +40,6 @@ export function SpandansMagazineComponent() {
   const [scoreData, setScoreData] = useState<ScoreData>({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [backgroundImage, setBackgroundImage] = useState("/spooky.png");
   const [selectedDay, setSelectedDay] = useState("Day 1");
 
   useEffect(() => {

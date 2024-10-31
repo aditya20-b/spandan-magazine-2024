@@ -21,20 +21,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  EventCategories,
-  EventDetails,
-  DayResults,
-  ScoreData,
-  Standing,
-  MatchResult,
-} from "@/app/types";
+import { EventCategories, Standing, MatchResult } from "@/app/types";
 
 import { events, eventDetails } from "@/app/mock";
 
 const categories = ["Literary and Debate", "Culturals", "Sports", "Proshows"];
 const sportsWithScores = ["Basketball", "Cricket", "Football", "Futsal"];
 const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"];
+const backgroundImage = "/spooky.png";
 
 export function SpandansMagazineComponent() {
   const [selectedCategory, setSelectedCategory] = useState<EventCategories>(
@@ -48,7 +42,6 @@ export function SpandansMagazineComponent() {
   const [matchResults, setMatchResults] = useState<MatchResult[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [backgroundImage, setBackgroundImage] = useState("/spooky.png");
   const [selectedDay, setSelectedDay] = useState("Day 1");
   const [error, setError] = useState<string | null>(null);
 
@@ -57,24 +50,28 @@ export function SpandansMagazineComponent() {
       setIsLoading(true);
       setError(null);
       try {
-        const standingsResponse = await fetch('/api/standings');
+        const standingsResponse = await fetch("/api/standings");
         const standingsData = await standingsResponse.json();
         if (standingsData.success && Array.isArray(standingsData.data)) {
           setStandings(standingsData.data);
         } else {
-          throw new Error(standingsData.error || 'Failed to fetch standings data');
+          throw new Error(
+            standingsData.error || "Failed to fetch standings data"
+          );
         }
 
-        const resultsResponse = await fetch('/api/results');
+        const resultsResponse = await fetch("/api/results");
         const resultsData = await resultsResponse.json();
         if (resultsData.success && Array.isArray(resultsData.data)) {
           setMatchResults(resultsData.data);
         } else {
-          throw new Error(resultsData.error || 'Failed to fetch match results data');
+          throw new Error(
+            resultsData.error || "Failed to fetch match results data"
+          );
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setError('Failed to fetch data. Please try again.');
+        console.error("Error fetching data:", error);
+        setError("Failed to fetch data. Please try again.");
       } finally {
         setIsLoading(false);
       }
@@ -103,11 +100,7 @@ export function SpandansMagazineComponent() {
     }
 
     if (error) {
-      return (
-        <div className="text-red-500 text-center">
-          {error}
-        </div>
-      );
+      return <div className="text-red-500 text-center">{error}</div>;
     }
 
     const details = eventDetails[selectedEvent] || {
@@ -147,14 +140,16 @@ export function SpandansMagazineComponent() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {standings.filter(team => team.sport === selectedEvent).map((team, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{team.teamName}</TableCell>
-                      <TableCell>{team.wins}</TableCell>
-                      <TableCell>{team.losses}</TableCell>
-                      <TableCell>{team.points}</TableCell>
-                    </TableRow>
-                  ))}
+                  {standings
+                    .filter((team) => team.sport === selectedEvent)
+                    .map((team, index) => (
+                      <TableRow key={index}>
+                        <TableCell>{team.teamName}</TableCell>
+                        <TableCell>{team.wins}</TableCell>
+                        <TableCell>{team.losses}</TableCell>
+                        <TableCell>{team.points}</TableCell>
+                      </TableRow>
+                    ))}
                 </TableBody>
               </Table>
             </TabsContent>
@@ -188,15 +183,21 @@ export function SpandansMagazineComponent() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {matchResults.filter(result => result.day === selectedDay && result.sport === selectedEvent).map((result, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{result.team1}</TableCell>
-                        <TableCell>{result.team2}</TableCell>
-                        <TableCell>
-                          {result.score1} - {result.score2}
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {matchResults
+                      .filter(
+                        (result) =>
+                          result.day === selectedDay &&
+                          result.sport === selectedEvent
+                      )
+                      .map((result, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{result.team1}</TableCell>
+                          <TableCell>{result.team2}</TableCell>
+                          <TableCell>
+                            {result.score1} - {result.score2}
+                          </TableCell>
+                        </TableRow>
+                      ))}
                   </TableBody>
                 </Table>
               </div>
