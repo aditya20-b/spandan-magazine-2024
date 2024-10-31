@@ -2,6 +2,7 @@
 import sqlite3 from "sqlite3";
 import { open, type Database } from "sqlite";
 import type { Standing, MatchResult } from "@/app/types";
+const path = require("path");
 
 
 let db: Database | null = null;
@@ -9,7 +10,7 @@ let db: Database | null = null;
 async function openDb() {
   if (!db) {
     db = await open({
-      filename: "./spandans.db",
+      filename: path.resolve(__dirname, "spandans.db"),
       driver: sqlite3.Database,
     });
   }
