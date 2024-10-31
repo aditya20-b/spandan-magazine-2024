@@ -2,7 +2,7 @@
 import sqlite3 from "sqlite3";
 import { open, type Database } from "sqlite";
 import type { Standing, MatchResult } from "@/app/types";
-const path = require("path");
+import path from "path";
 
 
 let db: Database | null = null;
