@@ -32,7 +32,7 @@ type EventDetails = {
 // };
 
 export type Standing = {
-  id?: number;
+  id?: number | string;
   sport: string;
   teamName: string;
   wins: number;

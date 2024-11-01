@@ -4,7 +4,7 @@ import { successResponse, errorResponse } from '@/lib/api-utils'
 import { z } from 'zod'
 
 const standingSchema = z.object({
-  id: z.number().optional(),
+  id: z.union([z.string(), z.number()]),
   sport: z.string().min(1),
   teamName: z.string().min(1),
   wins: z.number().int().nonnegative(),
@@ -31,6 +31,7 @@ export async function POST(request: NextRequest) {
     
     const validationResult = standingsArraySchema.safeParse(data)
     if (!validationResult.success) {
+      console.log('Invalid data format:', validationResult.error)
       return errorResponse('Invalid data format', 400)
     }
 
