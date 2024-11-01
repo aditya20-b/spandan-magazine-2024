@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Moon, Menu, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,43 +50,36 @@ export function SpandansMagazineComponent() {
   const [standings, setStandings] = useState<Standing[]>([]);
   const [matchResults, setMatchResults] = useState<MatchResult[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedDay, setSelectedDay] = useState("Day 1");
   const [error, setError] = useState<string | null>(null);
+  const [, setActiveTab] = useState<'standings' | 'results'>('standings');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const standingsResponse = await fetch("/api/standings");
-        const standingsData = await standingsResponse.json();
-        if (standingsData.success && Array.isArray(standingsData.data)) {
-          setStandings(standingsData.data);
-        } else {
-          throw new Error(
-            standingsData.error || "Failed to fetch standings data"
-          );
-        }
-
-        const resultsResponse = await fetch("/api/results");
-        const resultsData = await resultsResponse.json();
-        if (resultsData.success && Array.isArray(resultsData.data)) {
-          setMatchResults(resultsData.data);
-        } else {
-          throw new Error(
-            resultsData.error || "Failed to fetch match results data"
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError("Failed to fetch data. Please try again.");
-      } finally {
-        setIsLoading(false);
+  const fetchSportData = useCallback(async (sport: string) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const standingsResponse = await fetch("/api/standings");
+      const standingsData = await standingsResponse.json();
+      if (standingsData.success && Array.isArray(standingsData.data)) {
+        setStandings(standingsData.data.filter((standing: Standing) => standing.sport === sport));
+      } else {
+        throw new Error(standingsData.error || "Failed to fetch standings data");
       }
-    };
 
-    fetchData();
+      const resultsResponse = await fetch("/api/results");
+      const resultsData = await resultsResponse.json();
+      if (resultsData.success && Array.isArray(resultsData.data)) {
+        setMatchResults(resultsData.data.filter((result: MatchResult) => result.sport === sport));
+      } else {
+        throw new Error(resultsData.error || "Failed to fetch match results data");
+      }
+    } catch (error) {
+      console.error("Error fetching sport data:", error);
+      setError("Failed to fetch sport data. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -94,6 +87,12 @@ export function SpandansMagazineComponent() {
     setSelectedSubCategory(subCategories[0]);
     setSelectedEvent("");
   }, [selectedCategory]);
+
+  useEffect(() => {
+    if (sportsWithScores.includes(selectedEvent)) {
+      fetchSportData(selectedEvent);
+    }
+  }, [selectedEvent, fetchSportData]);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category as EventCategories);
@@ -132,7 +131,7 @@ export function SpandansMagazineComponent() {
         </div>
 
         {sportsWithScores.includes(selectedEvent) ? (
-          <Tabs defaultValue="standings">
+          <Tabs defaultValue="standings" onValueChange={(value) => setActiveTab(value as 'standings' | 'results')}>
             <TabsList>
               <TabsTrigger value="standings">Standings</TabsTrigger>
               <TabsTrigger value="results">Day-wise Results</TabsTrigger>
@@ -149,16 +148,14 @@ export function SpandansMagazineComponent() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {standings
-                    .filter((team) => team.sport === selectedEvent)
-                    .map((team, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{team.teamName}</TableCell>
-                        <TableCell>{team.wins}</TableCell>
-                        <TableCell>{team.losses}</TableCell>
-                        <TableCell>{team.points}</TableCell>
-                      </TableRow>
-                    ))}
+                  {standings.map((team, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{team.teamName}</TableCell>
+                      <TableCell>{team.wins}</TableCell>
+                      <TableCell>{team.losses}</TableCell>
+                      <TableCell>{team.points}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TabsContent>
@@ -193,11 +190,7 @@ export function SpandansMagazineComponent() {
                   </TableHeader>
                   <TableBody>
                     {matchResults
-                      .filter(
-                        (result) =>
-                          result.day === selectedDay &&
-                          result.sport === selectedEvent
-                      )
+                      .filter((result) => result.day === selectedDay)
                       .map((result, index) => (
                         <TableRow key={index}>
                           <TableCell>{result.team1}</TableCell>
@@ -298,6 +291,11 @@ export function SpandansMagazineComponent() {
                       : "outline"
                   }
                   onClick={() => setSelectedSubCategory(subCategory)}
+                  className= {
+                    selectedSubCategory === subCategory
+                      ? "bg-red-900/50 text-red-50 border border-white hover:bg-orange-700"
+                      : "bg-red-700/30 hover:bg-red-700/50 text-red-50 border-none"
+                  }
                 >
                   {subCategory}
                 </Button>
