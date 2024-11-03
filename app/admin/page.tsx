@@ -46,10 +46,21 @@ const sportsWithScores = [
   "Basketball (Women)",
   "Cricket",
   "Football",
-  "Futsal",
-  "Hockey",
+  "Futsal (Men)",
+  "Futsal (Women)",
+  "Hockey (Men)",
+  "Hockey (Women)",
   "Throwball",
-  "Volleyball"
+  "Volleyball (Men)",
+  "Volleyball (Women)",
+  "Badminton (Men)",
+  "Badminton (Women)",
+  "Table Tennis (Men)",
+  "Table Tennis (Women)",
+  "Athletics (Men)",
+  "Athletics (Women)",
+  "Aquatics (Men)",
+  "Aquatics (Women)",
 ];
 const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"];
 
