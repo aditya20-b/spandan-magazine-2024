@@ -27,9 +27,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { EventCategories, Standing, MatchResult } from "@/app/types";
+import type { EventCategories, Standing, MatchResult } from "@/app/types";
 
-import { events, eventDetails } from "@/app/mock";
+import { events, eventDetails } from "@/utils/constants";
 
 const categories = ["Literary and Debate", "Culturals", "Sports", "Proshows"];
 const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"];
@@ -494,12 +494,15 @@ export function SpandansMagazineComponent() {
       }}
     >
       <div className="fixed inset-0 bg-cover bg-center z-0" />
-
+      <div className="relative z-10 flex-grow flex flex-col"></div>
       <div className="relative z-10 flex-grow flex flex-col">
         <header className="bg-black/50 p-4">
           <h1 className="text-4xl font-bold text-center mb-4">
             Spandan Magazine
           </h1>
+          <p className="text-center text-sm text-red-200">
+        Presented by Literary and Debating Committee
+          </p>
           <nav className="flex justify-between items-center">
             <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
               <SheetTrigger asChild>
@@ -544,6 +547,7 @@ export function SpandansMagazineComponent() {
                 </Button>
               ))}
             </div>
+            {/* TODO: Remove dark mode icon */ }
             <Button variant="ghost" size="icon">
               <Moon className="h-6 w-6" />
             </Button>
