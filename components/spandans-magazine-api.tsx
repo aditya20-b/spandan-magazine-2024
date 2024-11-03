@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import { Moon, Menu, Loader2, ChevronDown } from "lucide-react";
@@ -32,7 +32,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 import { EventCategories, Standing, MatchResult } from "@/app/types";
 
 import { events, eventDetails } from "@/app/mock";
@@ -49,16 +49,16 @@ interface SportCategory {
 const sportCategories: Record<string, SportCategory> = {
   "Team Sports": {
     withGender: ["Futsal", "Basketball", "Hockey", "Volleyball"],
-    other: ["Football", "Cricket", "Throwball"]
+    other: ["Football", "Cricket", "Throwball"],
   },
   "Racquet Sports": {
     withGender: ["Badminton", "Table Tennis"],
-    other: []
+    other: [],
   },
   "Individual Sports": {
     withGender: ["Athletics", "Aquatics"],
-    other: []
-  }
+    other: [],
+  },
 };
 
 interface CategorySelectorProps {
@@ -67,8 +67,17 @@ interface CategorySelectorProps {
   selectedEvent: string;
 }
 
-function CategorySelector({ category, onSelect, selectedEvent }: CategorySelectorProps) {
+function CategorySelector({
+  category,
+  onSelect,
+  selectedEvent,
+}: CategorySelectorProps) {
   const [activeSubCategory, setActiveSubCategory] = useState("");
+  useEffect(() => {
+    // Set the first subcategory as active by default
+    const firstSubCategory = Object.keys(events[category])[0];
+    setActiveSubCategory(firstSubCategory);
+  }, [category]);
 
   const DesktopSelector = () => (
     <div className="hidden md:block">
@@ -76,7 +85,9 @@ function CategorySelector({ category, onSelect, selectedEvent }: CategorySelecto
         {Object.keys(events[category]).map((subCategory) => (
           <Button
             key={subCategory}
-            variant={activeSubCategory === subCategory ? "secondary" : "outline"}
+            variant={
+              activeSubCategory === subCategory ? "secondary" : "outline"
+            }
             onClick={() => setActiveSubCategory(subCategory)}
             className={
               activeSubCategory === subCategory
@@ -98,7 +109,7 @@ function CategorySelector({ category, onSelect, selectedEvent }: CategorySelecto
           >
             {event}
           </Button>
-        )) || <p>No events available for this category.</p>}
+        ))}
       </div>
     </div>
   );
@@ -107,7 +118,11 @@ function CategorySelector({ category, onSelect, selectedEvent }: CategorySelecto
     <div className="md:hidden">
       <Accordion type="single" collapsible className="w-full">
         {Object.entries(events[category]).map(([subCategory, eventList]) => (
-          <AccordionItem key={subCategory} value={subCategory} className="border-white/20">
+          <AccordionItem
+            key={subCategory}
+            value={subCategory}
+            className="border-white/20"
+          >
             <AccordionTrigger className="text-red-50 hover:text-red-200">
               {subCategory}
             </AccordionTrigger>
@@ -118,7 +133,9 @@ function CategorySelector({ category, onSelect, selectedEvent }: CategorySelecto
                     key={event}
                     variant="outline"
                     onClick={() => onSelect(event)}
-                    className={`w-full ${selectedEvent === event ? 'bg-red-700/50' : ''}`}
+                    className={`w-full ${
+                      selectedEvent === event ? "bg-red-700/50" : ""
+                    }`}
                   >
                     {event}
                   </Button>
@@ -169,14 +186,18 @@ function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
         {sportCategories[activeCategory].withGender.map((sport) => (
           <div key={sport} className="flex flex-col gap-2">
             <Button
-              variant={selectedSport === `${sport} (Men)` ? "secondary" : "outline"}
+              variant={
+                selectedSport === `${sport} (Men)` ? "secondary" : "outline"
+              }
               className="h-auto py-2 text-left justify-start"
               onClick={() => onSelect(`${sport} (Men)`)}
             >
               {sport} (Men)
             </Button>
             <Button
-              variant={selectedSport === `${sport} (Women)` ? "secondary" : "outline"}
+              variant={
+                selectedSport === `${sport} (Women)` ? "secondary" : "outline"
+              }
               className="h-auto py-2 text-left justify-start"
               onClick={() => onSelect(`${sport} (Women)`)}
             >
@@ -202,7 +223,11 @@ function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
     <div className="md:hidden">
       <Accordion type="single" collapsible className="w-full">
         {Object.entries(sportCategories).map(([category, sports]) => (
-          <AccordionItem key={category} value={category} className="border-white/20">
+          <AccordionItem
+            key={category}
+            value={category}
+            className="border-white/20"
+          >
             <AccordionTrigger className="text-red-50 hover:text-red-200">
               {category}
             </AccordionTrigger>
@@ -210,13 +235,19 @@ function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
               <div className="flex flex-col gap-2">
                 {sports.withGender.map((sport) => (
                   <div key={sport} className="bg-red-900/30 rounded-lg p-2">
-                    <div className="text-sm font-medium text-red-200 mb-2">{sport}</div>
+                    <div className="text-sm font-medium text-red-200 mb-2">
+                      {sport}
+                    </div>
                     <div className="flex gap-2">
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => onSelect(`${sport} (Men)`)}
-                        className={`flex-1 ${selectedSport === `${sport} (Men)` ? 'bg-red-700/50' : ''}`}
+                        className={`flex-1 ${
+                          selectedSport === `${sport} (Men)`
+                            ? "bg-red-700/50"
+                            : ""
+                        }`}
                       >
                         Men
                       </Button>
@@ -224,7 +255,11 @@ function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
                         variant="outline"
                         size="sm"
                         onClick={() => onSelect(`${sport} (Women)`)}
-                        className={`flex-1 ${selectedSport === `${sport} (Women)` ? 'bg-red-700/50' : ''}`}
+                        className={`flex-1 ${
+                          selectedSport === `${sport} (Women)`
+                            ? "bg-red-700/50"
+                            : ""
+                        }`}
                       >
                         Women
                       </Button>
@@ -236,7 +271,9 @@ function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
                     key={sport}
                     variant="outline"
                     onClick={() => onSelect(sport)}
-                    className={`w-full ${selectedSport === sport ? 'bg-red-700/50' : ''}`}
+                    className={`w-full ${
+                      selectedSport === sport ? "bg-red-700/50" : ""
+                    }`}
                   >
                     {sport}
                   </Button>
@@ -268,7 +305,9 @@ export function SpandansMagazineComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDay, setSelectedDay] = useState("Day 1");
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'standings' | 'results'>('standings');
+  const [activeTab, setActiveTab] = useState<"standings" | "results">(
+    "standings"
+  );
 
   const fetchSportData = useCallback(async (sport: string) => {
     setIsLoading(true);
@@ -277,17 +316,29 @@ export function SpandansMagazineComponent() {
       const standingsResponse = await fetch("/api/standings");
       const standingsData = await standingsResponse.json();
       if (standingsData.success && Array.isArray(standingsData.data)) {
-        setStandings(standingsData.data.filter((standing: Standing) => standing.sport === sport));
+        setStandings(
+          standingsData.data.filter(
+            (standing: Standing) => standing.sport === sport
+          )
+        );
       } else {
-        throw new Error(standingsData.error || "Failed to fetch standings data");
+        throw new Error(
+          standingsData.error || "Failed to fetch standings data"
+        );
       }
 
       const resultsResponse = await fetch("/api/results");
       const resultsData = await resultsResponse.json();
       if (resultsData.success && Array.isArray(resultsData.data)) {
-        setMatchResults(resultsData.data.filter((result: MatchResult) => result.sport === sport));
+        setMatchResults(
+          resultsData.data.filter(
+            (result: MatchResult) => result.sport === sport
+          )
+        );
       } else {
-        throw new Error(resultsData.error || "Failed to fetch match results data");
+        throw new Error(
+          resultsData.error || "Failed to fetch match results data"
+        );
       }
     } catch (error) {
       console.error("Error fetching sport data:", error);
@@ -302,7 +353,12 @@ export function SpandansMagazineComponent() {
   }, [selectedCategory]);
 
   useEffect(() => {
-    if (selectedEvent && (selectedEvent.includes("(Men)") || selectedEvent.includes("(Women)") || ["Football", "Cricket", "Throwball"].includes(selectedEvent))) {
+    if (
+      selectedEvent &&
+      (selectedEvent.includes("(Men)") ||
+        selectedEvent.includes("(Women)") ||
+        ["Football", "Cricket", "Throwball"].includes(selectedEvent))
+    ) {
       fetchSportData(selectedEvent);
     }
   }, [selectedEvent, fetchSportData]);
@@ -343,8 +399,16 @@ export function SpandansMagazineComponent() {
           </div>
         </div>
 
-        {selectedEvent && (selectedEvent.includes("(Men)") || selectedEvent.includes("(Women)") || ["Football", "Cricket", "Throwball"].includes(selectedEvent)) ? (
-          <Tabs defaultValue="standings" onValueChange={(value) => setActiveTab(value as 'standings' | 'results')}>
+        {selectedEvent &&
+        (selectedEvent.includes("(Men)") ||
+          selectedEvent.includes("(Women)") ||
+          ["Football", "Cricket", "Throwball"].includes(selectedEvent)) ? (
+          <Tabs
+            defaultValue="standings"
+            onValueChange={(value) =>
+              setActiveTab(value as "standings" | "results")
+            }
+          >
             <TabsList>
               <TabsTrigger value="standings">Standings</TabsTrigger>
               <TabsTrigger value="results">Day-wise Results</TabsTrigger>
@@ -389,7 +453,6 @@ export function SpandansMagazineComponent() {
                       {day}
                     </Button>
                   ))}
-                
                 </div>
                 <Table>
                   <TableCaption>
@@ -496,8 +559,8 @@ export function SpandansMagazineComponent() {
         <main className="flex-grow p-6">
           <div className="max-w-6xl mx-auto bg-black/70 rounded-lg p-6">
             {selectedCategory === "Sports" ? (
-              <SportsSelector 
-                onSelect={setSelectedEvent} 
+              <SportsSelector
+                onSelect={setSelectedEvent}
                 selectedSport={selectedEvent}
               />
             ) : (
