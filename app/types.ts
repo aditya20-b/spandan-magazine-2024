@@ -20,17 +20,6 @@ type EventDetails = {
   };
 };
 
-// type DayResults = {
-//   [key: string]: {
-//     [key: string]: {
-//       team1: string;
-//       team2: string;
-//       score1: number;
-//       score2: number;
-//     }[];
-//   };
-// };
-
 export type Standing = {
   id?: number | string;
   sport: string;
@@ -51,11 +40,9 @@ export type MatchResult = {
 };
 
 
-
-type DayResults = {
-  [key: string]: {
-    [key: string]: MatchResult[]
-  }
+type SportCategory = {
+  withGender: string[];
+  other: string[];
 }
 
-export type { EventCategories, ScoreData, EventDetails, DayResults };
+export type { EventCategories, ScoreData, EventDetails, SportCategory };
