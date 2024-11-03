@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Moon, Menu, Loader2, ChevronDown } from "lucide-react";
+import { Moon, Menu, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -21,12 +21,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Accordion,
   AccordionContent,
@@ -305,7 +299,7 @@ export function SpandansMagazineComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDay, setSelectedDay] = useState("Day 1");
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"standings" | "results">(
+  const [, setActiveTab] = useState<"standings" | "results">(
     "standings"
   );
 
