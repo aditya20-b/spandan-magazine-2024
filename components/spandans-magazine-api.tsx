@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from "react";
-import { Moon, Menu, Loader2 } from "lucide-react";
+import { Moon, Menu, Loader2, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -21,30 +21,244 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { EventCategories, Standing, MatchResult } from "@/app/types";
 
 import { events, eventDetails } from "@/app/mock";
 
 const categories = ["Literary and Debate", "Culturals", "Sports", "Proshows"];
-const sportsWithScores = [
-  "Basketball (Men)",
-  "Basketball (Women)",
-  "Cricket",
-  "Football",
-  "Futsal",
-  "Hockey",
-  "Throwball",
-  "Volleyball"
-];
 const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"];
 const backgroundImage = "/spooky.png";
+
+interface SportCategory {
+  withGender: string[];
+  other: string[];
+}
+
+const sportCategories: Record<string, SportCategory> = {
+  "Team Sports": {
+    withGender: ["Futsal", "Basketball", "Hockey", "Volleyball"],
+    other: ["Football", "Cricket", "Throwball"]
+  },
+  "Racquet Sports": {
+    withGender: ["Badminton", "Table Tennis"],
+    other: []
+  },
+  "Individual Sports": {
+    withGender: ["Athletics", "Aquatics"],
+    other: []
+  }
+};
+
+interface CategorySelectorProps {
+  category: EventCategories;
+  onSelect: (event: string) => void;
+  selectedEvent: string;
+}
+
+function CategorySelector({ category, onSelect, selectedEvent }: CategorySelectorProps) {
+  const [activeSubCategory, setActiveSubCategory] = useState("");
+
+  const DesktopSelector = () => (
+    <div className="hidden md:flex flex-col gap-4">
+      <div className="flex flex-wrap gap-2">
+        {Object.keys(events[category]).map((subCategory) => (
+          <DropdownMenu key={subCategory}>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant={activeSubCategory === subCategory ? "secondary" : "outline"}
+                className="bg-red-900/50 text-red-50 border border-white hover:bg-red-700"
+              >
+                {subCategory} <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56 bg-red-900/90 border-white">
+              {events[category][subCategory].map((event) => (
+                <DropdownMenuItem 
+                  key={event}
+                  onClick={() => onSelect(event)}
+                  className={`text-red-50 hover:bg-red-700/50 focus:bg-red-700/50 ${selectedEvent === event ? 'bg-red-700/50' : ''}`}
+                >
+                  {event}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ))}
+      </div>
+    </div>
+  );
+
+  const MobileSelector = () => (
+    <div className="md:hidden">
+      <Accordion type="single" collapsible className="w-full">
+        {Object.entries(events[category]).map(([subCategory, eventList]) => (
+          <AccordionItem key={subCategory} value={subCategory} className="border-white/20">
+            <AccordionTrigger className="text-red-50 hover:text-red-200">
+              {subCategory}
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-col gap-2">
+                {eventList.map((event) => (
+                  <Button
+                    key={event}
+                    variant="outline"
+                    onClick={() => onSelect(event)}
+                    className={`w-full ${selectedEvent === event ? 'bg-red-700/50' : ''}`}
+                  >
+                    {event}
+                  </Button>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  );
+
+  return (
+    <div className="w-full">
+      <DesktopSelector />
+      <MobileSelector />
+    </div>
+  );
+}
+
+interface SportsSelectorProps {
+  onSelect: (sport: string) => void;
+  selectedSport: string;
+}
+
+function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
+  const [activeCategory, setActiveCategory] = useState("Team Sports");
+
+  const DesktopSelector = () => (
+    <div className="hidden md:flex flex-col gap-4">
+      <div className="flex flex-wrap gap-2">
+        {Object.keys(sportCategories).map((category) => (
+          <DropdownMenu key={category}>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant={activeCategory === category ? "secondary" : "outline"}
+                className="bg-red-900/50 text-red-50 border border-white hover:bg-red-700"
+              >
+                {category} <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56 bg-red-900/90 border-white">
+              {sportCategories[category].withGender.map((sport) => (
+                <DropdownMenuItem 
+                  key={sport}
+                  className="text-red-50 hover:bg-red-700/50 focus:bg-red-700/50"
+                >
+                  <div className="flex flex-col w-full">
+                    <Button
+                      variant="ghost"
+                      onClick={() => onSelect(`${sport} (Men)`)}
+                      className={`justify-start ${selectedSport === `${sport} (Men)` ? 'bg-red-700/50' : ''}`}
+                    >
+                      {sport} (Men)
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      onClick={() => onSelect(`${sport} (Women)`)}
+                      className={`justify-start ${selectedSport === `${sport} (Women)` ? 'bg-red-700/50' : ''}`}
+                    >
+                      {sport} (Women)
+                    </Button>
+                  </div>
+                </DropdownMenuItem>
+              ))}
+              {sportCategories[category].other.map((sport) => (
+                <DropdownMenuItem 
+                  key={sport}
+                  onClick={() => onSelect(sport)}
+                  className={`text-red-50 hover:bg-red-700/50 focus:bg-red-700/50 ${selectedSport === sport ? 'bg-red-700/50' : ''}`}
+                >
+                  {sport}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ))}
+      </div>
+    </div>
+  );
+
+  const MobileSelector = () => (
+    <div className="md:hidden">
+      <Accordion type="single" collapsible className="w-full">
+        {Object.entries(sportCategories).map(([category, sports]) => (
+          <AccordionItem key={category} value={category} className="border-white/20">
+            <AccordionTrigger className="text-red-50 hover:text-red-200">
+              {category}
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-col gap-2">
+                {sports.withGender.map((sport) => (
+                  <div key={sport} className="bg-red-900/30 rounded-lg p-2">
+                    <div className="text-sm font-medium text-red-200 mb-2">{sport}</div>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => onSelect(`${sport} (Men)`)}
+                        className={`flex-1 ${selectedSport === `${sport} (Men)` ? 'bg-red-700/50' : ''}`}
+                      >
+                        Men
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => onSelect(`${sport} (Women)`)}
+                        className={`flex-1 ${selectedSport === `${sport} (Women)` ? 'bg-red-700/50' : ''}`}
+                      >
+                        Women
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                {sports.other.map((sport) => (
+                  <Button
+                    key={sport}
+                    variant="outline"
+                    onClick={() => onSelect(sport)}
+                    className={`w-full ${selectedSport === sport ? 'bg-red-700/50' : ''}`}
+                  >
+                    {sport}
+                  </Button>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  );
+
+  return (
+    <div className="w-full">
+      <DesktopSelector />
+      <MobileSelector />
+    </div>
+  );
+}
 
 export function SpandansMagazineComponent() {
   const [selectedCategory, setSelectedCategory] = useState<EventCategories>(
     categories[0] as EventCategories
-  );
-  const [selectedSubCategory, setSelectedSubCategory] = useState(
-    Object.keys(events[categories[0] as EventCategories])[0]
   );
   const [selectedEvent, setSelectedEvent] = useState("");
   const [standings, setStandings] = useState<Standing[]>([]);
@@ -53,7 +267,7 @@ export function SpandansMagazineComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDay, setSelectedDay] = useState("Day 1");
   const [error, setError] = useState<string | null>(null);
-  const [, setActiveTab] = useState<'standings' | 'results'>('standings');
+  const [activeTab, setActiveTab] = useState<'standings' | 'results'>('standings');
 
   const fetchSportData = useCallback(async (sport: string) => {
     setIsLoading(true);
@@ -83,13 +297,11 @@ export function SpandansMagazineComponent() {
   }, []);
 
   useEffect(() => {
-    const subCategories = Object.keys(events[selectedCategory]);
-    setSelectedSubCategory(subCategories[0]);
     setSelectedEvent("");
   }, [selectedCategory]);
 
   useEffect(() => {
-    if (sportsWithScores.includes(selectedEvent)) {
+    if (selectedEvent && (selectedEvent.includes("(Men)") || selectedEvent.includes("(Women)") || ["Football", "Cricket", "Throwball"].includes(selectedEvent))) {
       fetchSportData(selectedEvent);
     }
   }, [selectedEvent, fetchSportData]);
@@ -130,7 +342,7 @@ export function SpandansMagazineComponent() {
           </div>
         </div>
 
-        {sportsWithScores.includes(selectedEvent) ? (
+        {selectedEvent && (selectedEvent.includes("(Men)") || selectedEvent.includes("(Women)") || ["Football", "Cricket", "Throwball"].includes(selectedEvent)) ? (
           <Tabs defaultValue="standings" onValueChange={(value) => setActiveTab(value as 'standings' | 'results')}>
             <TabsList>
               <TabsTrigger value="standings">Standings</TabsTrigger>
@@ -161,7 +373,7 @@ export function SpandansMagazineComponent() {
             </TabsContent>
             <TabsContent value="results">
               <div className="space-y-4">
-                <div className="flex justify-center space-x-2">
+                <div className="flex flex-wrap justify-center gap-2">
                   {days.map((day) => (
                     <Button
                       key={day}
@@ -176,6 +388,7 @@ export function SpandansMagazineComponent() {
                       {day}
                     </Button>
                   ))}
+                
                 </div>
                 <Table>
                   <TableCaption>
@@ -281,39 +494,18 @@ export function SpandansMagazineComponent() {
 
         <main className="flex-grow p-6">
           <div className="max-w-6xl mx-auto bg-black/70 rounded-lg p-6">
-            <div className="mb-6 flex flex-wrap gap-2 justify-center">
-              {Object.keys(events[selectedCategory]).map((subCategory) => (
-                <Button
-                  key={subCategory}
-                  variant={
-                    selectedSubCategory === subCategory
-                      ? "secondary"
-                      : "outline"
-                  }
-                  onClick={() => setSelectedSubCategory(subCategory)}
-                  className= {
-                    selectedSubCategory === subCategory
-                      ? "bg-red-900/50 text-red-50 border border-white hover:bg-orange-700"
-                      : "bg-red-700/30 hover:bg-red-700/50 text-red-50 border-none"
-                  }
-                >
-                  {subCategory}
-                </Button>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {events[selectedCategory][selectedSubCategory]?.map((event) => (
-                <Button
-                  key={event}
-                  variant={selectedEvent === event ? "secondary" : "outline"}
-                  className="h-auto py-4 text-left justify-start"
-                  onClick={() => setSelectedEvent(event)}
-                >
-                  {event}
-                </Button>
-              )) || <p>No events available for this category.</p>}
-            </div>
+            {selectedCategory === "Sports" ? (
+              <SportsSelector 
+                onSelect={setSelectedEvent} 
+                selectedSport={selectedEvent}
+              />
+            ) : (
+              <CategorySelector
+                category={selectedCategory}
+                onSelect={setSelectedEvent}
+                selectedEvent={selectedEvent}
+              />
+            )}
 
             {selectedEvent && (
               <div className="mt-8 p-6 bg-red-900/50 rounded-lg">
