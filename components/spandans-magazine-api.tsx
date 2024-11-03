@@ -71,31 +71,34 @@ function CategorySelector({ category, onSelect, selectedEvent }: CategorySelecto
   const [activeSubCategory, setActiveSubCategory] = useState("");
 
   const DesktopSelector = () => (
-    <div className="hidden md:flex flex-col gap-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="hidden md:block">
+      <div className="mb-6 flex flex-wrap gap-2 justify-center">
         {Object.keys(events[category]).map((subCategory) => (
-          <DropdownMenu key={subCategory}>
-            <DropdownMenuTrigger asChild>
-              <Button 
-                variant={activeSubCategory === subCategory ? "secondary" : "outline"}
-                className="bg-red-900/50 text-red-50 border border-white hover:bg-red-700"
-              >
-                {subCategory} <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-red-900/90 border-white">
-              {events[category][subCategory].map((event) => (
-                <DropdownMenuItem 
-                  key={event}
-                  onClick={() => onSelect(event)}
-                  className={`text-red-50 hover:bg-red-700/50 focus:bg-red-700/50 ${selectedEvent === event ? 'bg-red-700/50' : ''}`}
-                >
-                  {event}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button
+            key={subCategory}
+            variant={activeSubCategory === subCategory ? "secondary" : "outline"}
+            onClick={() => setActiveSubCategory(subCategory)}
+            className={
+              activeSubCategory === subCategory
+                ? "bg-red-900/50 text-red-50 border border-white hover:bg-orange-700"
+                : "bg-red-700/30 hover:bg-red-700/50 text-red-50 border-none"
+            }
+          >
+            {subCategory}
+          </Button>
         ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {events[category][activeSubCategory]?.map((event) => (
+          <Button
+            key={event}
+            variant={selectedEvent === event ? "secondary" : "outline"}
+            className="h-auto py-4 text-left justify-start"
+            onClick={() => onSelect(event)}
+          >
+            {event}
+          </Button>
+        )) || <p>No events available for this category.</p>}
       </div>
     </div>
   );
@@ -145,53 +148,51 @@ function SportsSelector({ onSelect, selectedSport }: SportsSelectorProps) {
   const [activeCategory, setActiveCategory] = useState("Team Sports");
 
   const DesktopSelector = () => (
-    <div className="hidden md:flex flex-col gap-4">
-      <div className="flex flex-wrap gap-2">
+    <div className="hidden md:block">
+      <div className="mb-6 flex flex-wrap gap-2 justify-center">
         {Object.keys(sportCategories).map((category) => (
-          <DropdownMenu key={category}>
-            <DropdownMenuTrigger asChild>
-              <Button 
-                variant={activeCategory === category ? "secondary" : "outline"}
-                className="bg-red-900/50 text-red-50 border border-white hover:bg-red-700"
-              >
-                {category} <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-red-900/90 border-white">
-              {sportCategories[category].withGender.map((sport) => (
-                <DropdownMenuItem 
-                  key={sport}
-                  className="text-red-50 hover:bg-red-700/50 focus:bg-red-700/50"
-                >
-                  <div className="flex flex-col w-full">
-                    <Button
-                      variant="ghost"
-                      onClick={() => onSelect(`${sport} (Men)`)}
-                      className={`justify-start ${selectedSport === `${sport} (Men)` ? 'bg-red-700/50' : ''}`}
-                    >
-                      {sport} (Men)
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      onClick={() => onSelect(`${sport} (Women)`)}
-                      className={`justify-start ${selectedSport === `${sport} (Women)` ? 'bg-red-700/50' : ''}`}
-                    >
-                      {sport} (Women)
-                    </Button>
-                  </div>
-                </DropdownMenuItem>
-              ))}
-              {sportCategories[category].other.map((sport) => (
-                <DropdownMenuItem 
-                  key={sport}
-                  onClick={() => onSelect(sport)}
-                  className={`text-red-50 hover:bg-red-700/50 focus:bg-red-700/50 ${selectedSport === sport ? 'bg-red-700/50' : ''}`}
-                >
-                  {sport}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button
+            key={category}
+            variant={activeCategory === category ? "secondary" : "outline"}
+            onClick={() => setActiveCategory(category)}
+            className={
+              activeCategory === category
+                ? "bg-red-900/50 text-red-50 border border-white hover:bg-orange-700"
+                : "bg-red-700/30 hover:bg-red-700/50 text-red-50 border-none"
+            }
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {sportCategories[activeCategory].withGender.map((sport) => (
+          <div key={sport} className="flex flex-col gap-2">
+            <Button
+              variant={selectedSport === `${sport} (Men)` ? "secondary" : "outline"}
+              className="h-auto py-2 text-left justify-start"
+              onClick={() => onSelect(`${sport} (Men)`)}
+            >
+              {sport} (Men)
+            </Button>
+            <Button
+              variant={selectedSport === `${sport} (Women)` ? "secondary" : "outline"}
+              className="h-auto py-2 text-left justify-start"
+              onClick={() => onSelect(`${sport} (Women)`)}
+            >
+              {sport} (Women)
+            </Button>
+          </div>
+        ))}
+        {sportCategories[activeCategory].other.map((sport) => (
+          <Button
+            key={sport}
+            variant={selectedSport === sport ? "secondary" : "outline"}
+            className="h-auto py-2 text-left justify-start"
+            onClick={() => onSelect(sport)}
+          >
+            {sport}
+          </Button>
         ))}
       </div>
     </div>
