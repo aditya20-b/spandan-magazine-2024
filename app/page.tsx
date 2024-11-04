@@ -1,5 +1,5 @@
-import { SpandansMagazineComponent } from "@/components/SpandanMagazine"
+import { HomePage } from "@/components/HomePage"
 
 export default function Page() {
-  return <SpandansMagazineComponent />
+  return <HomePage />
 }

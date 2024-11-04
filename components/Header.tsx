@@ -25,7 +25,15 @@ export function Header({
 }: HeaderProps) {
   return (
     <header className="bg-black/50 p-4">
-      <h1 className="text-4xl font-bold text-center mb-4">Spandan Magazine</h1>
+      <div className="flex justify-center mb-4">
+        <img
+          src="home/Spandan-small-logo.png"
+          alt="Spandan Logo"
+          className="h-36 w-auto"
+        />
+        {/* <h1 className="text-4xl font-bold text-center">Spandan Magazine</h1> */}
+        {/* <h1 className="text-4xl font-bold text-center">Spandan Magazine</h1> */}
+      </div>
       <nav className="flex justify-between items-center">
         <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
           <SheetTrigger asChild>
@@ -68,9 +76,6 @@ export function Header({
             </Button>
           ))}
         </div>
-        <Button variant="ghost" size="icon">
-          <Moon className="h-6 w-6" />
-        </Button>
       </nav>
     </header>
   );
