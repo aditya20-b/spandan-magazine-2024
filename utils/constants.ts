@@ -216,23 +216,39 @@ const eventDetails: EventDetails = {
     writeup: "Feel the energy and skill as teams compete in this thrilling game of football, where every goal brings the crowd to its feet!",
     image: "/Football.webp?height=300&width=400",
   },
-  "Futsal": {
+  "Futsal (Men)": {
     writeup: "Fast-paced, skill-packed, and loaded with quick goals! Futsal brings the excitement of football indoors with a twist.",
     image: "/futsal.webp?height=300&width=400",
   },
-  "Hockey": {
+  "Hockey (Men)": {
     writeup: "Speed, precision, and teamwork come together in this intense battle on the hockey field.",
     image: "/hockey.webp?height=300&width=400",
+  },
+  "Futsal (Women)": {
+    writeup: "Fast-paced, skill-packed, and loaded with quick goals! Futsal brings the excitement of football indoors with a twist.",
+    image: "/futsal.webp?height=300&width=400",
+  },
+  "Hockey (Women)": {
+    writeup: "Speed, precision, and teamwork come together in this intense battle on the hockey field.",
+    image: "/hockey.webp?height=300&width=400",
+  },
+  "Volleyball (Men)": {
+    writeup: "Bump, set, spike! Join us as teams serve up intense rallies and dramatic saves in this volleyball showdown.",
+    image: "/volleyball.webp?height=300&width=400",
+  },
+  "Volleyball (Women)": {
+    writeup: "Bump, set, spike! Join us as teams serve up intense rallies and dramatic saves in this volleyball showdown.",
+    image: "/volleyball.webp?height=300&width=400",
   },
   "Throwball": {
     writeup: "An exciting mix of power and precision! Watch teams compete in this high-energy game of throwball.",
     image: "/throwball.webp?height=300&width=400",
   },
-  "Volleyball": {
-    writeup: "Bump, set, spike! Join us as teams serve up intense rallies and dramatic saves in this volleyball showdown.",
-    image: "/volleyball.webp?height=300&width=400",
+  "Table Tennis (Men)": {
+    writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
+    image: "/Table_Tennis.webp?height=300&width=400",
   },
-  "Table Tennis": {
+  "Table Tennis (Women)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
     image: "/Table_Tennis.webp?height=300&width=400",
   },
@@ -240,7 +256,11 @@ const eventDetails: EventDetails = {
     writeup: "Forehands, backhands, and powerful serves—join us for thrilling rallies and fierce competition on the tennis court.",
     image: "/Tennis.webp?height=300&width=400",
   },
-  "Badminton": {
+  "Badminton (Men)": {
+    writeup: "Swift footwork and precise shots define this exciting game of badminton. Get ready for a match filled with energy!",
+    image: "/Badminton.webp?height=300&width=400",
+  },
+  "Badminton (Women)": {
     writeup: "Swift footwork and precise shots define this exciting game of badminton. Get ready for a match filled with energy!",
     image: "/Badminton.webp?height=300&width=400",
   },
@@ -252,12 +272,22 @@ const eventDetails: EventDetails = {
     writeup: "Aim, flick, and pocket! This classic game of carrom tests your accuracy and control in every round.",
     image: "/Carrom.webp?height=300&width=400",
   },
-  "Aquatics": {
+  "Aquatics (Men)": {
     writeup:
       "Dive into the pool for an exciting competition of speed, skill, and endurance in our aquatics events.",
     image: "/Aquatics.webp?height=300&width=400",
   },
-  "Athletics": {
+  "Athletics (Men)": {
+    writeup:
+      "Push your limits and showcase your speed, strength, and endurance across various track and field events.",
+    image: "/Athletics.webp?height=300&width=400",
+  },
+  "Aquatics (Women)": {
+    writeup:
+      "Dive into the pool for an exciting competition of speed, skill, and endurance in our aquatics events.",
+    image: "/Aquatics.webp?height=300&width=400",
+  },
+  "Athletics (Women)": {
     writeup:
       "Push your limits and showcase your speed, strength, and endurance across various track and field events.",
     image: "/Athletics.webp?height=300&width=400",
@@ -380,7 +410,7 @@ const sportCategories: Record<string, SportCategory> = {
   },
   "Racquet Sports": {
     withGender: ["Badminton", "Table Tennis"],
-    other: [],
+    other: ["Tennis"],
   },
   "Individual Sports": {
     withGender: ["Athletics", "Aquatics"],
