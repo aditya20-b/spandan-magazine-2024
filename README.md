@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spandan Magazine
+
+## About
+
+Spandan Magazine is a dynamic web application for JIPMER's annual fest, Spandan. This project showcases event details, sports standings, and results for South India's biggest medical college fest.
+
+## Features
+
+- Interactive home page with animated elements
+- Comprehensive event listings across various categories
+- Real-time sports standings and match results
+- Responsive design for both desktop and mobile devices
+- Admin dashboard for managing event data
+
+## Tech Stack
+
+- Next.js 13 with App Router
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion for animations
+- Shadcn UI components
+- Neon postgreSQL database
+- Vercel for deployment
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
+- Node.js (v14 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/aditya20-b/spandan-magazine-2024.git
+   cd spandan-magazine-2024
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+   or
+   ```
+   yarn install
+   ```
+
+3. Create a `.env.local` file in the root directory and add any necessary environment variables.
+
+### Running the Development Server
+
+Run the development server:
+```
 npm run dev
-# or
+```
+or
+```
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/`: Next.js 13 app directory
+- `components/`: React components
+- `hooks/`: Custom React hooks
+- `types/`: TypeScript type definitions
+- `utils/`: Utility functions and constants
+- `public/`: Static assets
 
-## Learn More
+## Key Components
 
-To learn more about Next.js, take a look at the following resources:
+- `HomePage`: The landing page with animated elements
+- `SpandansMagazineComponent`: Main component for browsing events and results
+- `AdminPage`: Dashboard for managing event data
+- `CategorySelector` and `SportsSelector`: Components for navigating different event categories
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/api/standings`: Get and update sports standings
+- `/api/results`: Get and update match results
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is designed to be deployed on Vercel. Follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your code to a GitHub repository
+2. Connect your GitHub account to Vercel
+3. Import the project from GitHub
+4. Configure your environment variables in Vercel
+5. Deploy!
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the [MIT](LICENSE) License.
