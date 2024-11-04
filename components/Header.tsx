@@ -26,13 +26,13 @@ export function Header({
   return (
     <header className="bg-black/50 p-4">
       <div className="flex justify-center mb-4">
-        <img
-          src="home/Spandan-small-logo.png"
-          alt="Spandan Logo"
-          className="h-36 w-auto"
-        />
-        {/* <h1 className="text-4xl font-bold text-center">Spandan Magazine</h1> */}
-        {/* <h1 className="text-4xl font-bold text-center">Spandan Magazine</h1> */}
+        <a href="/">
+          <img
+        src="home/Spandan-small-logo.png"
+        alt="Spandan Logo"
+        className="h-36 w-auto"
+          />
+        </a>
       </div>
       <nav className="flex justify-between items-center">
         <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>

@@ -32,7 +32,7 @@ export function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5 }}
           className="absolute inset-0 z-0"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
@@ -48,7 +48,7 @@ export function HomePage() {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20, duration: 0.5 }}
           className="relative mb-12"
         >
           <img
@@ -62,7 +62,7 @@ export function HomePage() {
           className="text-lg mb-8 text-red-200"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
         >
           A weeklong spectacle where reality and mystery intertwine, where
           excitement and thrill take center stage, and where medicos from all
@@ -93,7 +93,7 @@ export function HomePage() {
                 className="flex items-center"
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 2 + index * 0.2, duration: 0.5 }}
+                transition={{ delay: 1.5 + index * 0.2, duration: 0.5 }}
               >
                 <span className="text-red-500 mr-2">&#9733;</span> {item}
               </motion.li>
@@ -105,7 +105,7 @@ export function HomePage() {
           className="text-xl font-semibold mt-6 mb-4 text-red-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 3.5, duration: 0.8 }}
+          transition={{ delay: 2.5, duration: 0.5 }}
         >
           Don&apos;t miss our captivating highlights:
         </motion.p>
@@ -113,7 +113,7 @@ export function HomePage() {
           className="list-none text-left mb-8 space-y-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 4, duration: 0.8 }}
+          transition={{ delay: 2.5, duration: 0.8 }}
         >
           {["Pro Shows", "Spandan's iconic ramp walk, the Dernier Cri"].map(
             (item, index) => (
@@ -122,7 +122,7 @@ export function HomePage() {
                 className="flex items-center"
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 4 + index * 0.2, duration: 0.5 }}
+                transition={{ delay: 2.5 + index * 0.2, duration: 0.5 }}
               >
                 <span className="text-red-500 mr-2">&#9734;</span> {item}
               </motion.li>
@@ -134,7 +134,7 @@ export function HomePage() {
           className="text-lg mb-8 text-red-200"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 4.5, duration: 1 }}
+          transition={{ delay: 2.5, duration: 0.5 }}
         >
           Join us as we go &apos;Beyond the Veil&apos; and create unforgettable memories.
           After all, it&apos;s the thrill of discovery that makes the journey
@@ -144,7 +144,7 @@ export function HomePage() {
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 5, duration: 0.5 }}
+          transition={{ delay: 2.5, duration: 0.3 }}
           className="space-y-8"
         >
           <Button
