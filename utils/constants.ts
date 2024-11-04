@@ -88,319 +88,319 @@ const eventDetails: EventDetails = {
   "Formal Debate": {
     writeup:
       "Engage in intellectual discourse and showcase your argumentative skills in our Formal Debate competition.",
-    image: "/Formal_Debate.webp?height=300&width=400",
+    image: "/Formal_Debate.webp",
   },
   "TJ Jaishankar Memorial Quiz": {
     writeup:
       "Test your knowledge and quick thinking in our TJ Jaishankar Memorial Quiz.",
-    image: "/Major_Quiz.webp?height=300&width=400",
+    image: "/Major_Quiz.webp",
   },
   "Not a Mediquiz": {
     writeup:
       "A quiz that blends the basics of medicine with general knowledge. Think you've got what it takes to tackle both worlds?",
-    image: "/Not_A_Mediquiz.webp?height=300&width=400",
+    image: "/Not_A_Mediquiz.webp",
   },
   "JAM": {
     writeup:
       "Think on your feet and speak your mind in our Just A Minute competition.",
-    image: "/JAM.webp?height=300&width=400",
+    image: "/JAM.webp",
   },
   "Turncoat": {
     writeup:
       "Switch sides at a moment’s notice in this intense solo debating event. Can you argue against yourself convincingly?",
-    image: "/turncoat.webp?height=300&width=400",
+    image: "/turncoat.webp",
   },
   "Shipwreck": {
     writeup:
       "Convince others to save you from a sinking ship as you role-play iconic characters in this imaginative event.",
-    image: "/shipwreck.webp?height=300&width=400",
+    image: "/shipwreck.webp",
   },
   "Dumb Charades": {
     writeup:
       "Communicate without words in this fun and challenging game that will test your acting skills.",
-    image: "/Dumb_Charades.webp?height=300&width=400",
+    image: "/Dumb_Charades.webp",
   },
   "Pot Pourri": {
     writeup:
       "A dynamic mix of literary challenges that will push your creativity and wit to new levels.",
-    image: "/Potpourri.webp?height=300&width=400",
+    image: "/Potpourri.webp",
   },
   "Sports Quiz": {
     writeup:
       "For sports buffs: test your knowledge of games, players, and records in this high-energy quiz.",
-    image: "/sports_quiz.webp?height=300&width=400",
+    image: "/sports_quiz.webp",
   },
   "Fandom Quiz": {
     writeup:
       "Dive into the world of fandoms and see how well you know popular universes and characters.",
-    image: "/fandom_quiz.webp?height=300&width=400",
+    image: "/fandom_quiz.webp",
   },
   "Cryptic Crossword": {
     writeup:
       "Solve cryptic clues and fill in the grid in this brain-teasing crossword challenge.",
-    image: "/cryptic_crossword.webp?height=300&width=400",
+    image: "/cryptic_crossword.webp",
   },
   "Scrabble": {
     writeup:
       "Compete with words in this classic game of strategy and vocabulary.",
-    image: "/scrabble.webp?height=300&width=400",
+    image: "/scrabble.webp",
   },
   "Malarkey": {
     writeup:
       "Bluff, fib, and talk your way to victory in this game of deceit and humor.",
-    image: "/malarkey.webp?height=300&width=400",
+    image: "/malarkey.webp",
   },
   "Flash Fiction": {
     writeup:
       "Craft a story in a flash. Put your creativity and brevity to the test in this fast-paced writing event.",
-    image: "/flash_fiction.webp?height=300&width=400",
+    image: "/flash_fiction.webp",
   },
   "Creative Writing": {
     writeup:
       "Let your imagination soar as you weave words into stories, poems, or essays in this creative writing competition.",
-    image: "/creative_writing.webp?height=300&width=400",
+    image: "/creative_writing.webp",
   },
   "Poetry Writing": {
     writeup:
       "Express yourself through verse in this competition for budding poets.",
-    image: "/poetry.webp?height=300&width=400",
+    image: "/poetry.webp",
   },
   "6 Word Stories": {
     writeup:
       "Challenge yourself to tell a complete story in just six words. Can you be concise and compelling?",
-    image: "/flash_fiction.webp?height=300&width=400",
+    image: "/flash_fiction.webp",
   },
   "Solo Singing: Eastern": {
     writeup:
       "Display your mellifluous voice to enchant the crowd, lest they mistake your sonorous singing for that of a Koyal's call.",
-    image: "/solosinging_eastern.webp?height=300&width=400",
+    image: "/solosinging_eastern.webp",
   },
   "Alaap: Indian Band": {
     writeup:
       "Showcase the rich tapestry of Indian music, from ghazals of the North to Carnatic melodies of the South.",
-    image: "/alaap.webp?height=300&width=400",
+    image: "/alaap.webp",
   },
   "Tinnitus: Western Band": {
     writeup:
       "Join us for an eclectic experience with high-energy rock anthems and powerful riffs from bands across the nation.",
-    image: "/tinnitus.webp?height=300&width=400",
+    image: "/tinnitus.webp",
   },
   "Dernier Cri: Fashion Show": {
     writeup:
       "Poise, power, and perfection on display in Spandan’s ultimate ramp walk show. Show off your glitz and glamour!",
-    image: "/dernier_cri.webp?height=300&width=400",
+    image: "/dernier_cri.webp",
   },
   "Adaptunes": {
     writeup:
       "Ever-switching steps, but always on beat. Show off your improv game in this ultimate battle of spontaneity.",
-    image: "/adaptunes.webp?height=300&width=400",
+    image: "/adaptunes.webp",
   },
   "Euphony: Western Acoustics Band": {
     writeup:
       "No amps, connectors, or pedals here. Just you and your instrument, to enthrall your audience.",
-    image: "/euphony.webp?height=300&width=400",
+    image: "/euphony.webp",
   },
   "Basketball (Men)": {
     writeup: "Get ready for some serious hoops! Fast breaks, slam dunks, and fierce competition make this a can’t-miss event.",
-    image: "/Basketball.webp?height=300&width=400",
+    image: "/Basketball.webp",
   },
   "Basketball (Women)": {
     writeup: "Watch the intensity and skill as teams battle it out on the court, fighting for every point.",
-    image: "/Basketball.webp?height=300&width=400",
+    image: "/Basketball.webp",
   },
   "Cricket": {
     writeup: "From blistering sixes to precise bowling, witness the excitement and strategy of this cricket tournament unfold.",
-    image: "/Cricket.webp?height=300&width=400",
+    image: "/Cricket.webp",
   },
   "Football": {
     writeup: "Feel the energy and skill as teams compete in this thrilling game of football, where every goal brings the crowd to its feet!",
-    image: "/Football.webp?height=300&width=400",
+    image: "/Football.webp",
   },
   "Futsal (Men)": {
     writeup: "Fast-paced, skill-packed, and loaded with quick goals! Futsal brings the excitement of football indoors with a twist.",
-    image: "/futsal.webp?height=300&width=400",
+    image: "/futsal.webp",
   },
   "Hockey (Men)": {
     writeup: "Speed, precision, and teamwork come together in this intense battle on the hockey field.",
-    image: "/hockey.webp?height=300&width=400",
+    image: "/hockey.webp",
   },
   "Futsal (Women)": {
     writeup: "Fast-paced, skill-packed, and loaded with quick goals! Futsal brings the excitement of football indoors with a twist.",
-    image: "/futsal.webp?height=300&width=400",
+    image: "/futsal.webp",
   },
   "Hockey (Women)": {
     writeup: "Speed, precision, and teamwork come together in this intense battle on the hockey field.",
-    image: "/hockey.webp?height=300&width=400",
+    image: "/hockey.webp",
   },
   "Volleyball (Men)": {
     writeup: "Bump, set, spike! Join us as teams serve up intense rallies and dramatic saves in this volleyball showdown.",
-    image: "/volleyball.webp?height=300&width=400",
+    image: "/volleyball.webp",
   },
   "Volleyball (Women)": {
     writeup: "Bump, set, spike! Join us as teams serve up intense rallies and dramatic saves in this volleyball showdown.",
-    image: "/volleyball.webp?height=300&width=400",
+    image: "/volleyball.webp",
   },
   "Throwball": {
     writeup: "An exciting mix of power and precision! Watch teams compete in this high-energy game of throwball.",
-    image: "/throwball.webp?height=300&width=400",
+    image: "/throwball.webp",
   },
   "Table Tennis (Men)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
-    image: "/table_tennis.webp?height=300&width=400",
+    image: "/table_tennis.webp",
   },
   "Table Tennis (Women)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
-    image: "/table_tennis.webp?height=300&width=400",
+    image: "/table_tennis.webp",
   },
   "Tennis": {
     writeup: "Forehands, backhands, and powerful serves—join us for thrilling rallies and fierce competition on the tennis court.",
-    image: "/Tennis.webp?height=300&width=400",
+    image: "/Tennis.webp",
   },
   "Badminton (Men)": {
     writeup: "Swift footwork and precise shots define this exciting game of badminton. Get ready for a match filled with energy!",
-    image: "/Badminton.webp?height=300&width=400",
+    image: "/Badminton.webp",
   },
   "Badminton (Women)": {
     writeup: "Swift footwork and precise shots define this exciting game of badminton. Get ready for a match filled with energy!",
-    image: "/Badminton.webp?height=300&width=400",
+    image: "/Badminton.webp",
   },
   "Chess": {
     writeup: "A battle of minds! Every move counts in this game of strategy and skill as players go head-to-head on the chessboard.",
-    image: "/chess.webp?height=300&width=400",
+    image: "/chess.webp",
   },
   "Carrom": {
     writeup: "Aim, flick, and pocket! This classic game of carrom tests your accuracy and control in every round.",
-    image: "/Carrom.webp?height=300&width=400",
+    image: "/Carrom.webp",
   },
   "Aquatics (Men)": {
     writeup:
       "Dive into the pool for an exciting competition of speed, skill, and endurance in our aquatics events.",
-    image: "/Aquatics.webp?height=300&width=400",
+    image: "/Aquatics.webp",
   },
   "Athletics (Men)": {
     writeup:
       "Push your limits and showcase your speed, strength, and endurance across various track and field events.",
-    image: "/Athletics.webp?height=300&width=400",
+    image: "/Athletics.webp",
   },
   "Aquatics (Women)": {
     writeup:
       "Dive into the pool for an exciting competition of speed, skill, and endurance in our aquatics events.",
-    image: "/Aquatics.webp?height=300&width=400",
+    image: "/Aquatics.webp",
   },
   "Athletics (Women)": {
     writeup:
       "Push your limits and showcase your speed, strength, and endurance across various track and field events.",
-    image: "/Athletics.webp?height=300&width=400",
+    image: "/Athletics.webp",
   },
   "Dance Battle": {
     writeup:
       "Face off in an electrifying dance showdown. Bring your best moves and battle it out on the dance floor.",
-    image: "/dance_battle.webp?height=300&width=400",
+    image: "/dance_battle.webp",
   },
   "Digital Art": {
     writeup:
       "Unleash your creativity in the digital realm and craft stunning artworks that push artistic boundaries.",
-    image: "/digital_art.webp?height=300&width=400",
+    image: "/digital_art.webp",
   },
   "Duet Dance": {
     writeup:
       "Dance as a duo and captivate the audience with synchronized moves and seamless teamwork.",
-    image: "/duet_dance.webp?height=300&width=400",
+    image: "/duet_dance.webp",
   },
   "Face Painting": {
     writeup:
       "Transform faces into colorful canvases with intricate designs and vivid creativity.",
-    image: "/face_painting.webp?height=300&width=400",
+    image: "/face_painting.webp",
   },
   "Group Dance": {
     writeup:
       "Showcase teamwork and creativity as your group takes the stage with a mesmerizing dance performance.",
-    image: "/group_dance.webp?height=300&width=400",
+    image: "/group_dance.webp",
   },
   "Mehendi": {
     writeup:
       "Express tradition and beauty with intricate mehendi designs that captivate the eye.",
-    image: "/mehendi.webp?height=300&width=400",
+    image: "/mehendi.webp",
   },
   "Mime": {
     writeup:
       "Communicate without words in this artful performance that relies solely on gestures and expressions.",
-    image: "/mime.webp?height=300&width=400",
+    image: "/mime.webp",
   },
   "Non-theme Group Dance: Eastern": {
     writeup:
       "Celebrate Eastern dance styles with a group performance that’s all about rhythm and grace.",
-    image: "/nontheme_group_dance_eastern.webp?height=300&width=400",
+    image: "/nontheme_group_dance_eastern.webp",
   },
   "Non-theme Group Dance: Western": {
     writeup:
       "Take the stage with a powerful Western dance routine that brings energy and style to the forefront.",
-    image: "/nontheme_group_dance_western.webp?height=300&width=400",
+    image: "/nontheme_group_dance_western.webp",
   },
   "Origami": {
     writeup:
       "Show off your skills in the delicate art of paper folding and create beautiful origami designs.",
-    image: "/origami.webp?height=300&width=400",
+    image: "/origami.webp",
   },
   "Painting": {
     writeup:
       "Let your creativity flow as you bring your imagination to life on canvas.",
-    image: "/painting.webp?height=300&width=400",
+    image: "/painting.webp",
   },
   "Play": {
     writeup:
       "Step into a world of drama and storytelling as actors bring characters and scenes to life.",
-    image: "/play.webp?height=300&width=400",
+    image: "/play.webp",
   },
   "Pot Painting": {
     writeup:
       "Transform simple pots into artistic creations with paint and imagination.",
-    image: "/pot_painting.webp?height=300&width=400",
+    image: "/pot_painting.webp",
   },
   "Sketching": {
     writeup:
       "Capture the essence of your subject with just a pencil and paper in this sketching competition.",
-    image: "/sketch.webp?height=300&width=400",
+    image: "/sketch.webp",
   },
     "Solo Dance: Western": {
     writeup:
       "Showcase your talent as you take the stage solo with a powerful Western dance performance.",
-    image: "/solodance_western.webp?height=300&width=400",
+    image: "/solodance_western.webp",
   },
   "Solo Instrumental": {
     writeup:
       "Captivate the audience with your musical skill in this solo instrumental performance.",
-    image: "/solo_instrumental.webp?height=300&width=400",
+    image: "/solo_instrumental.webp",
   },
   "Solo Singing: Western": {
     writeup:
       "Enchant the crowd with your voice as you perform a soulful Western song.",
-    image: "/solosinging_western.webp?height=300&width=400",
+    image: "/solosinging_western.webp",
   },
   "Theme Group Dance": {
     writeup:
       "Express a story or theme through dance in this dynamic group performance.",
-    image: "/theme_group_dance.webp?height=300&width=400",
+    image: "/theme_group_dance.webp",
   },
   "T-shirt Painting": {
     writeup:
       "Design and paint a t-shirt with your creative ideas and artistic flair.",
-    image: "/tshirt_painting.webp?height=300&width=400",
+    image: "/tshirt_painting.webp",
   },
   "Variety": {
     writeup:
       "Unleash your creativity in this free-form event where anything goes! Show off your unique talents.",
-    image: "/variety.webp?height=300&width=400",
+    image: "/variety.webp",
   },
 "Collage": {
     writeup:
       "Unleash your creativity and bring together a mix of materials to create a visually stunning collage.",
-    image: "/collage.webp?height=300&width=400",
+    image: "/collage.webp",
   },
 "Skit": {
     writeup:
       "Take the stage with your team in a short, engaging performance that combines humor, drama, and creativity.",
-    image: "/skit.webp?height=300&width=400", 
+    image: "/skit.webp", 
   },
 };
 const sportCategories: Record<string, SportCategory> = {
