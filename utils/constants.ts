@@ -246,11 +246,11 @@ const eventDetails: EventDetails = {
   },
   "Table Tennis (Men)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
-    image: "/Table_Tennis.webp?height=300&width=400",
+    image: "/table_tennis.webp?height=300&width=400",
   },
   "Table Tennis (Women)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
-    image: "/Table_Tennis.webp?height=300&width=400",
+    image: "/table_tennis.webp?height=300&width=400",
   },
   "Tennis": {
     writeup: "Forehands, backhands, and powerful serves—join us for thrilling rallies and fierce competition on the tennis court.",
