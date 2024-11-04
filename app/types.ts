@@ -17,8 +17,22 @@ type EventDetails = {
   [key: string]: {
     writeup: string;
     image: string;
+    results?: EventResults[];
   };
 };
+
+enum Positions {
+  FIRST = "first",
+  SECOND = "second",
+  THIRD = "third",
+  CONSOLATION = "consolation",
+}
+
+type EventResults = {
+  position: Positions,
+  teamName?: string,
+  college: string,
+}
 
 export type Standing = {
   id?: number | string;
@@ -45,4 +59,5 @@ type SportCategory = {
   other: string[];
 }
 
+export { Positions };
 export type { EventCategories, ScoreData, EventDetails, SportCategory };

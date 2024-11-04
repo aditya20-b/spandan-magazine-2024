@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { Loader2, Trophy, Medal, Award, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -11,8 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Standing, MatchResult } from "@/app/types";
-import { eventDetails } from "@/utils/constants";
-import { days } from "@/utils/constants";
+import { eventDetails, days } from "@/utils/constants";
 
 interface EventContentProps {
   selectedEvent: string;
@@ -48,6 +47,35 @@ export function EventContent({
   const details = eventDetails[selectedEvent] || {
     writeup: "Event details coming soon...",
     image: "/spooky.png",
+    results: []
+  };
+
+  const ResultIcon = ({ position }: { position: string }) => {
+    switch (position) {
+      case "first":
+        return <Trophy className="h-6 w-6 text-yellow-400" />;
+      case "second":
+        return <Medal className="h-6 w-6 text-gray-400" />;
+      case "third":
+        return <Award className="h-6 w-6 text-yellow-600" />;
+      default:
+        return <Star className="h-6 w-6 text-purple-400" />;
+    }
+  };
+
+  const positionText = (position: string) => {
+    switch (position) {
+      case "first":
+        return "1st Place";
+      case "second":
+        return "2nd Place";
+      case "third":
+        return "3rd Place";
+      case "consolation":
+        return "Consolation";
+      default:
+        return "Special Mention";
+    }
   };
 
   return (
@@ -62,7 +90,6 @@ export function EventContent({
           <h3 className="text-2xl font-bold">{selectedEvent}</h3>
           <p>{details.writeup}</p>
         </div>
-      
       </div>
 
       {selectedEvent &&
@@ -144,9 +171,24 @@ export function EventContent({
           </TabsContent>
         </Tabs>
       ) : (
-        <div className="bg-red-900/30 p-4 rounded-lg">
-          <h4 className="text-xl font-semibold mb-2">Event Results</h4>
-          <p>Results and winners will be announced here after the event.</p>
+        <div className="bg-red-900/30 p-6 rounded-lg">
+          <h4 className="text-xl font-semibold mb-4">Event Results</h4>
+          {details.results && details.results.length > 0 ? (
+            <div className="space-y-4">
+              {details.results.map((result, index) => (
+                <div key={index} className="flex items-center space-x-4 bg-red-900/20 p-4 rounded-lg">
+                <ResultIcon position={result.position} />
+                  <div>
+                    <p className="font-semibold text-lg">{positionText(result.position)}</p>
+                    <p>{result.teamName || result.college}</p>
+                    <p className="text-sm text-red-300">{result.college}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>Results and winners will be announced here after the event.</p>
+          )}
         </div>
       )}
     </div>

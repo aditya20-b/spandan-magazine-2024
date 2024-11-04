@@ -1,4 +1,4 @@
-import { SportCategory, EventCategories, EventDetails } from "@/app/types";
+import { SportCategory, EventCategories, EventDetails, Positions } from "@/app/types";
 
 const categories = ["Literary and Debate", "Culturals", "Sports", "Proshows"];
 const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"];
@@ -89,6 +89,28 @@ const eventDetails: EventDetails = {
     writeup:
       "Engage in intellectual discourse and showcase your argumentative skills in our Formal Debate competition.",
     image: "/Formal_Debate.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "The Debating Society",
+        college: "IIT Bombay",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "The Delhi Debaters",
+        college: "IIT Delhi",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "The Madras Mooters",
+        college: "IIT Madras",
+      },
+      {
+        position: Positions.CONSOLATION,
+        teamName: "The KGP Orators",
+        college: "IIT Kharagpur",
+      }
+    ]
   },
   "TJ Jaishankar Memorial Quiz": {
     writeup:
