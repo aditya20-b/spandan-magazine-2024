@@ -46,7 +46,7 @@ const events: Record<EventCategories, Record<string, string[]>> = {
       "Theme Group Dance",
       "Non-theme Group Dance: Western",
       "Non-theme Group Dance: Eastern",
-      "Solo Dance",
+      "Solo Dance: Western",
       "Duet Dance",
       "Adaptunes",
       "Group Dance",
@@ -92,8 +92,8 @@ const eventDetails: EventDetails = {
     results: [
       {
         position: Positions.FIRST,
-        teamName: "The Debating Society",
-        college: "IIT Bombay",
+        teamName: "Manas + Aashish",
+        college: "",
       },
       {
         position: Positions.SECOND,
