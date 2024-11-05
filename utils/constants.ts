@@ -46,7 +46,7 @@ const events: Record<EventCategories, Record<string, string[]>> = {
       "Theme Group Dance",
       "Non-theme Group Dance: Western",
       "Non-theme Group Dance: Eastern",
-      "Solo Dance: Western",
+      "Solo Dance",
       "Duet Dance",
       "Adaptunes",
       "Group Dance",
@@ -401,7 +401,7 @@ const eventDetails: EventDetails = {
       "Capture the essence of your subject with just a pencil and paper in this sketching competition.",
     image: "/sketch.webp",
   },
-    "Solo Dance: Western": {
+    "Solo Dance": {
     writeup:
       "Showcase your talent as you take the stage solo with a powerful Western dance performance.",
     image: "/solodance_western.webp",
