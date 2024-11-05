@@ -422,8 +422,8 @@ const eventDetails: EventDetails = {
         college: "Mehas, MGR University and Tanzeer Ahmed, MGR University",
       },
       
-    ],
-    results: [
+    
+    
       {
         position: Positions.FIRST,
         teamName: "Solo Dance Eastern",
