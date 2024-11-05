@@ -23,7 +23,7 @@ Spandan Magazine is a dynamic web application for JIPMER's annual fest, Spandan.
 - Neon postgreSQL database
 - Vercel for deployment
 
-## Getting Started
+## Getting Started 
 
 ### Prerequisites
 
