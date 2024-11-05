@@ -230,7 +230,7 @@ const eventDetails: EventDetails = {
       {
         position: Positions.THIRD,
         teamName: "Hithapradha",
-        college: "PSG",
+        college: "PSGIMSR",
       },
         ]
   },
@@ -421,9 +421,6 @@ const eventDetails: EventDetails = {
         teamName: "Solo Dance Western",
         college: "Mehas, MGR University and Tanzeer Ahmed, MGR University",
       },
-      
-    
-    
       {
         position: Positions.FIRST,
         teamName: "Solo Dance Eastern",
