@@ -216,6 +216,23 @@ const eventDetails: EventDetails = {
     writeup:
       "Ever-switching steps, but always on beat. Show off your improv game in this ultimate battle of spontaneity.",
     image: "/adaptunes.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Anurag",
+        college: "Satyabhama University",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Sahana",
+        college: "Krishnagiri Medical College",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Hithapradha",
+        college: "PSG",
+      },
+        ]
   },
   "Euphony: Western Acoustics Band": {
     writeup:
@@ -388,6 +405,30 @@ const eventDetails: EventDetails = {
     writeup:
       "Showcase your talent as you take the stage solo with a powerful Western dance performance.",
     image: "/solodance_western.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Manas + Aashish",
+        college: "",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "The Delhi Debaters",
+        college: "IIT Delhi",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "The Madras Mooters",
+        college: "IIT Madras",
+      },
+      {
+        position: Positions.CONSOLATION,
+        teamName: "The KGP Orators",
+        college: "IIT Kharagpur",
+      }
+      
+    ]
+    
   },
   "Solo Instrumental": {
     writeup:
