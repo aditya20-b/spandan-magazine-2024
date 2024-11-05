@@ -408,24 +408,19 @@ const eventDetails: EventDetails = {
     results: [
       {
         position: Positions.FIRST,
-        teamName: "Manas + Aashish",
-        college: "",
+        teamName: "Solo Dance Western",
+        college: "Sumisha, IGMC",
       },
       {
         position: Positions.SECOND,
-        teamName: "The Delhi Debaters",
-        college: "IIT Delhi",
+        teamName: "Solo Dance Western",
+        college: "Sahana, Krishnagiri Medical College",
       },
       {
         position: Positions.THIRD,
-        teamName: "The Madras Mooters",
-        college: "IIT Madras",
+        teamName: "Solo Dance Western",
+        college: "Mehas, MGR University and Tanzeer Ahmed, MGR University",
       },
-      {
-        position: Positions.CONSOLATION,
-        teamName: "The KGP Orators",
-        college: "IIT Kharagpur",
-      }
       
     ]
     
