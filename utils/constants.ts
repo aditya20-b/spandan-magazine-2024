@@ -422,6 +422,24 @@ const eventDetails: EventDetails = {
         college: "Mehas, MGR University and Tanzeer Ahmed, MGR University",
       },
       
+    ],
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Solo Dance Eastern",
+        college: "Reshma, JIPMER",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Solo Dance Eastern",
+        college: "Sunanda, Bharatidasan Govt College",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Solo Dance Eastern",
+        college: "Sahana, Krishnagiri Medical College",
+      },
+      
     ]
     
   },
