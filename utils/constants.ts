@@ -344,7 +344,28 @@ const eventDetails: EventDetails = {
   "Duet Dance": {
     writeup:
       "Dance as a duo and captivate the audience with synchronized moves and seamless teamwork.",
-    image: "/duet_dance.webp",
+    image: "/duet_dance.webp",results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Duet Dance Eastern",
+        college: "Gayathri and Sejal, JIPMER",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Duet Dance Eastern",
+        college: "Gopika and Malavika, JIPMER",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "Duet Western",
+        college: "Tarun and Durganandini, Chengalpattu Medical College",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Duet Western",
+        college: "Rupadarshini and Dhanalakshmi, Krishnagiri Medical college",
+      }
+    ]
   },
   "Face Painting": {
     writeup:
@@ -370,11 +391,25 @@ const eventDetails: EventDetails = {
     writeup:
       "Celebrate Eastern dance styles with a group performance that’s all about rhythm and grace.",
     image: "/nontheme_group_dance_eastern.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "St. John's Medical College",
+        college: "",
+      }
+    ]
   },
   "Non-theme Group Dance: Western": {
     writeup:
       "Take the stage with a powerful Western dance routine that brings energy and style to the forefront.",
     image: "/nontheme_group_dance_western.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "AIIMS Bhubaneswar and JIPMER",
+        college: "",
+      }
+    ]
   },
   "Origami": {
     writeup:
@@ -454,6 +489,13 @@ const eventDetails: EventDetails = {
     writeup:
       "Express a story or theme through dance in this dynamic group performance.",
     image: "/theme_group_dance.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "JIPMER",
+        college: "",
+      }
+    ]
   },
   "T-shirt Painting": {
     writeup:
