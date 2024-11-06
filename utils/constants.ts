@@ -306,30 +306,290 @@ const eventDetails: EventDetails = {
   "Chess": {
     writeup: "A battle of minds! Every move counts in this game of strategy and skill as players go head-to-head on the chessboard.",
     image: "/chess.png",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Rapid",
+        college: "Vignesh Kasi",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Rapid",
+        college: "Akhilesh",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Rapid",
+        college: "Jeevan",
+      },
+      ]
+    ]
   },
   "Carrom": {
     writeup: "Aim, flick, and pocket! This classic game of carrom tests your accuracy and control in every round.",
     image: "/Carrom.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Singles",
+        college: "Shiv Perumal, JIPMER",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Singles",
+        college: "Lokesh, GMC Krishnagiri",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Singles",
+        college: "Kunalan, Sri Venkateswara University",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "Doubles",
+        college: "Fazil and Elanthamizhan, GVMC",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Doubles",
+        college: "Shiv Perumal and Siva Ganesh, JIPMER",
+      }
+      ]
   },
   "Aquatics (Men)": {
     writeup:
       "Dive into the pool for an exciting competition of speed, skill, and endurance in our aquatics events.",
     image: "/Aquatics.webp",
+      results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Backstroke 50M",
+        college: "Akash Navin B",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Backstroke 50M",
+        college: "Taksh",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Backstroke 50M",
+        college: "R Darshan Enoch",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "Breaststroke 50M",
+        college: "Akash Navin B",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Breaststroke 50M",
+        college: "Advait",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Breaststroke 50M",
+        college: "Taksh",
+      },{
+        position: Positions.FIRST,
+        teamName: "Freestyle 50M",
+        college: "Akash Navin B",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Freestyle 50M",
+        college: "Advait",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Freestyle 50M",
+        college: "Deebu Chena R F",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "Freestyle 4*50m Relay",
+        college: "KIMS Karad - Advait, Vibhu Patil, Viswajeet, Kunal",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Freestyle 4*50m Relay",
+        college: "SDUMC - Taksh, Bhavya, Harsh, Ajit",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Freestyle 4*50m Relay",
+        college: "JIPMER A - Wafiq, Manoj, Rohen, Sanjay",
+      },
+      ]
   },
   "Athletics (Men)": {
     writeup:
       "Push your limits and showcase your speed, strength, and endurance across various track and field events.",
     image: "/Athletics.webp",
+    results: [
+      {
+        position: Positions.FIRST,
+        teamName: "100M",
+        college: "Hari Kisan",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "100M",
+        college: "Sabeesh Arun",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "100M",
+        college: "Suriya Prakash",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "200M",
+        college: "Hari Kisan",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "200M",
+        college: "Rahul Rajnesan",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "200M",
+        college: "Melvin",
+      },{
+        position: Positions.FIRST,
+        teamName: "400M",
+        college: "Hari Kisan",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "400M",
+        college: "Rahul Rajnesan",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "400M",
+        college: "Melvin",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "1500M",
+        college: "Siddharth P.S",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "1500M",
+        college: "Suhas",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "1500M",
+        college: "Ashmal Mirshad",
+      },
+      ]
   },
   "Aquatics (Women)": {
     writeup:
       "Dive into the pool for an exciting competition of speed, skill, and endurance in our aquatics events.",
     image: "/Aquatics.webp",
+          results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Backstroke 50M",
+        college: "Shreya Nair",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Backstroke 50M",
+        college: "Vinaya B Krishnan",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Backstroke 50M",
+        college: "Indumathi",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "Breaststroke 50M",
+        college: "Geetha M",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Breaststroke 50M",
+        college: "Vinaya B Krishnan",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Breaststroke 50M",
+        college: "Shreya Nair",
+      },{
+        position: Positions.FIRST,
+        teamName: "Freestyle 50M",
+        college: "Vinaya B Krishnan",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Freestyle 50M",
+        college: "Geetha M",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Freestyle 50M",
+        college: "Indumathi",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "Freestyle 4*50m Relay",
+        college: "KIMS Karad - Advait, Vibhu Patil, Viswajeet, Kunal",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Freestyle 4*50m Relay",
+        college: "SDUMC - Taksh, Bhavya, Harsh, Ajit",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Freestyle 4*50m Relay",
+        college: "JIPMER A - Wafiq, Manoj, Rohen, Sanjay",
+      },
+      ]
   },
   "Athletics (Women)": {
     writeup:
       "Push your limits and showcase your speed, strength, and endurance across various track and field events.",
     image: "/Athletics.webp",
+        results: [
+      {
+        position: Positions.FIRST,
+        teamName: "100M",
+        college: "Nidheeksha",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "100M",
+        college: "Theresa",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "100M",
+        college: "Anupama",
+      },
+      {
+        position: Positions.FIRST,
+        teamName: "1500M",
+        college: "Malavika",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "1500M",
+        college: "Akasthiya",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "1500M",
+        college: "Sneha",
+      },
+      ]
   },
   "Dance Battle": {
     writeup:
