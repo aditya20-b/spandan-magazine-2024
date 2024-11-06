@@ -286,10 +286,54 @@ const eventDetails: EventDetails = {
   "Table Tennis (Men)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
     image: "/table_tennis.webp",
+     results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Singles",
+        college: "Charen M (AVMC)",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Singles",
+        college: "Vijayaganapathy (IGMC)",
+      },
+     {
+        position: Positions.FIRST,
+        teamName: "Team",
+        college: "Vijayaganapathy, Sharan, Poovanban (IGMC)",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Team",
+        college: "Solomon Davis, Charen (AVMC)",
+      },
+        ]
   },
   "Table Tennis (Women)": {
     writeup: "Experience the lightning-fast reflexes and incredible control as players compete in our table tennis tournament.",
     image: "/table_tennis.webp",
+         results: [
+      {
+        position: Positions.FIRST,
+        teamName: "Singles",
+        college: "Shakti (PSG)",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Singles",
+        college: "Deepika (Sri Venkateswara)",
+      },
+     {
+        position: Positions.FIRST,
+        teamName: "Team",
+        college: "Shakthi, Nandini (PSG)",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Team",
+        college: "Deepika, Balamaheshwari (Sri Venkateswara)",
+      },
+        ]
   },
   "Tennis": {
     writeup: "Forehands, backhands, and powerful serves—join us for thrilling rallies and fierce competition on the tennis court.",
@@ -298,10 +342,34 @@ const eventDetails: EventDetails = {
   "Badminton (Men)": {
     writeup: "Swift footwork and precise shots define this exciting game of badminton. Get ready for a match filled with energy!",
     image: "/Badminton.webp",
+         results: [
+     {
+        position: Positions.FIRST,
+        teamName: "Team",
+        college: "JIPMER (Sriram, Mukeesh, Rohit) ",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Team",
+        college: "SVMC (Niranjan, Benjamin )",
+      },
+        ]
   },
   "Badminton (Women)": {
     writeup: "Swift footwork and precise shots define this exciting game of badminton. Get ready for a match filled with energy!",
     image: "/Badminton.webp",
+             results: [
+     {
+        position: Positions.FIRST,
+        teamName: "Team",
+        college: "JIPMER (Gayathri, Nethra) ",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Team",
+        college: "CMC (Hannah, Divya Darshini)",
+      },
+        ]
   },
   "Chess": {
     writeup: "A battle of minds! Every move counts in this game of strategy and skill as players go head-to-head on the chessboard.",
@@ -322,7 +390,21 @@ const eventDetails: EventDetails = {
         teamName: "Rapid",
         college: "Jeevan",
       },
-      ]
+            {
+        position: Positions.FIRST,
+        teamName: "Blitz",
+        college: "Akhilesh",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "Blitz",
+        college: "Aswin",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "Blitz",
+        college: "Yaswanthan",
+      },
     ]
   },
   "Carrom": {
