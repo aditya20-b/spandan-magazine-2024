@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Standing, MatchResult, EventDetails, Positions } from "@/app/types";
+import { Standing, MatchResult, Positions } from "@/app/types";
 import { eventDetails, days } from "@/utils/constants";
 
 interface EventContentProps {
