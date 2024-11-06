@@ -47,6 +47,25 @@ export function EventContent({
   selectedDay,
   setSelectedDay,
 }: EventContentProps) {
+  
+  const filteredStandings = useMemo(() => {
+    return standings
+      .filter(standing => standing.sport === selectedEvent)
+      .sort((a, b) => {
+        if (b.wins !== a.wins) {
+          return b.wins - a.wins; // Sort by wins descending
+        } else if (b.points !== a.points) {
+          return b.points - a.points; // If wins are equal, sort by points descending
+        } else {
+          return a.losses - b.losses; // If points are also equal, sort by losses ascending
+        }
+      });
+  }, [standings, selectedEvent]);
+
+  const filteredMatchResults = matchResults.filter(result => result.sport === selectedEvent);
+
+  const isTeamEvent = teamBasedEvents.includes(selectedEvent);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-40">
@@ -112,24 +131,6 @@ export function EventContent({
       )}
     </div>
   );
-
-  const filteredStandings = useMemo(() => {
-    return standings
-      .filter(standing => standing.sport === selectedEvent)
-      .sort((a, b) => {
-        if (b.wins !== a.wins) {
-          return b.wins - a.wins; // Sort by wins descending
-        } else if (b.points !== a.points) {
-          return b.points - a.points; // If wins are equal, sort by points descending
-        } else {
-          return a.losses - b.losses; // If points are also equal, sort by losses ascending
-        }
-      });
-  }, [standings, selectedEvent]);
-
-  const filteredMatchResults = matchResults.filter(result => result.sport === selectedEvent);
-
-  const isTeamEvent = teamBasedEvents.includes(selectedEvent);
 
   return (
     <div className="space-y-6">
