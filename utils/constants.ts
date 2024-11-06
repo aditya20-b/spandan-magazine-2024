@@ -305,7 +305,7 @@ const eventDetails: EventDetails = {
   },
   "Chess": {
     writeup: "A battle of minds! Every move counts in this game of strategy and skill as players go head-to-head on the chessboard.",
-    image: "/chess.webp",
+    image: "/chess.png",
   },
   "Carrom": {
     writeup: "Aim, flick, and pocket! This classic game of carrom tests your accuracy and control in every round.",
@@ -530,6 +530,10 @@ const sportCategories: Record<string, SportCategory> = {
   "Individual Sports": {
     withGender: ["Athletics", "Aquatics"],
     other: [],
+  },
+  "Board Games": {
+    withGender: [],
+    other: ["Chess", "Carrom"],
   },
 };
 

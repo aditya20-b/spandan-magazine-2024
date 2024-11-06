@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Standing, MatchResult } from "@/app/types";
+import { Standing, MatchResult, EventDetails, Positions } from "@/app/types";
 import { eventDetails, days } from "@/utils/constants";
 
 interface EventContentProps {
@@ -22,6 +22,20 @@ interface EventContentProps {
   selectedDay: string;
   setSelectedDay: (day: string) => void;
 }
+
+const teamBasedEvents = [
+  "Football",
+  "Cricket",
+  "Throwball",
+  "Futsal (Men)",
+  "Futsal (Women)",
+  "Basketball (Men)",
+  "Basketball (Women)",
+  "Hockey (Men)",
+  "Hockey (Women)",
+  "Volleyball (Men)",
+  "Volleyball (Women)"
+];
 
 export function EventContent({
   selectedEvent,
@@ -47,36 +61,61 @@ export function EventContent({
   const details = eventDetails[selectedEvent] || {
     writeup: "Event details coming soon...",
     image: "/spooky.png",
-    results: []
+    results: [],
   };
 
-  const ResultIcon = ({ position }: { position: string }) => {
+  const ResultIcon = ({ position }: { position: Positions }) => {
     switch (position) {
-      case "first":
+      case Positions.FIRST:
         return <Trophy className="h-6 w-6 text-yellow-400" />;
-      case "second":
+      case Positions.SECOND:
         return <Medal className="h-6 w-6 text-gray-400" />;
-      case "third":
+      case Positions.THIRD:
         return <Award className="h-6 w-6 text-yellow-600" />;
       default:
         return <Star className="h-6 w-6 text-purple-400" />;
     }
   };
 
-  const positionText = (position: string) => {
+  const positionText = (position: Positions) => {
     switch (position) {
-      case "first":
+      case Positions.FIRST:
         return "1st Place";
-      case "second":
+      case Positions.SECOND:
         return "2nd Place";
-      case "third":
+      case Positions.THIRD:
         return "3rd Place";
-      case "consolation":
-        return "Consolation";
-      default:
+      case Positions.CONSOLATION:
         return "Special Mention";
     }
   };
+
+  const renderEventResults = () => (
+    <div className="bg-red-900/30 p-6 rounded-lg">
+      <h4 className="text-xl font-semibold mb-4">Event Results</h4>
+      {details.results && details.results.length > 0 ? (
+        <div className="space-y-4">
+          {details.results.map((result, index) => (
+            <div key={index} className="flex items-center space-x-4 bg-red-900/20 p-4 rounded-lg">
+              <ResultIcon position={result.position} />
+              <div>
+                <p className="font-semibold text-lg">{positionText(result.position)}</p>
+                <p>{result.teamName || result.college}</p>
+                {result.teamName && <p className="text-sm text-red-300">{result.college}</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Results and winners will be announced here after the event.</p>
+      )}
+    </div>
+  );
+
+  const filteredStandings = standings.filter(standing => standing.sport === selectedEvent);
+  const filteredMatchResults = matchResults.filter(result => result.sport === selectedEvent);
+
+  const isTeamEvent = teamBasedEvents.includes(selectedEvent);
 
   return (
     <div className="space-y-6">
@@ -92,10 +131,7 @@ export function EventContent({
         </div>
       </div>
 
-      {selectedEvent &&
-      (selectedEvent.includes("(Men)") ||
-        selectedEvent.includes("(Women)") ||
-        ["Football", "Cricket", "Throwball"].includes(selectedEvent)) ? (
+      {isTeamEvent ? (
         <Tabs defaultValue="standings">
           <TabsList>
             <TabsTrigger value="standings">Standings</TabsTrigger>
@@ -113,7 +149,7 @@ export function EventContent({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {standings.map((team, index) => (
+                {filteredStandings.map((team, index) => (
                   <TableRow key={index}>
                     <TableCell>{team.teamName}</TableCell>
                     <TableCell>{team.wins}</TableCell>
@@ -154,7 +190,7 @@ export function EventContent({
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {matchResults
+                  {filteredMatchResults
                     .filter((result) => result.day === selectedDay)
                     .map((result, index) => (
                       <TableRow key={index}>
@@ -171,25 +207,7 @@ export function EventContent({
           </TabsContent>
         </Tabs>
       ) : (
-        <div className="bg-red-900/30 p-6 rounded-lg">
-          <h4 className="text-xl font-semibold mb-4">Event Results</h4>
-          {details.results && details.results.length > 0 ? (
-            <div className="space-y-4">
-              {details.results.map((result, index) => (
-                <div key={index} className="flex items-center space-x-4 bg-red-900/20 p-4 rounded-lg">
-                <ResultIcon position={result.position} />
-                  <div>
-                    <p className="font-semibold text-lg">{positionText(result.position)}</p>
-                    <p>{result.teamName || result.college}</p>
-                    <p className="text-sm text-red-300">{result.college}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>Results and winners will be announced here after the event.</p>
-          )}
-        </div>
+        renderEventResults()
       )}
     </div>
   );
