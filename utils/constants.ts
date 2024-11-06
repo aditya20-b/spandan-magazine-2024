@@ -357,12 +357,12 @@ const eventDetails: EventDetails = {
       },
       {
         position: Positions.FIRST,
-        teamName: "Duet Western",
+        teamName: "Duet Dance Western",
         college: "Tarun and Durganandini, Chengalpattu Medical College",
       },
       {
         position: Positions.SECOND,
-        teamName: "Duet Western",
+        teamName: "Duet Dance Western",
         college: "Rupadarshini and Dhanalakshmi, Krishnagiri Medical college",
       }
     ]
