@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Loader2, Trophy, Medal, Award, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -112,7 +113,20 @@ export function EventContent({
     </div>
   );
 
-  const filteredStandings = standings.filter(standing => standing.sport === selectedEvent);
+  const filteredStandings = useMemo(() => {
+    return standings
+      .filter(standing => standing.sport === selectedEvent)
+      .sort((a, b) => {
+        if (b.wins !== a.wins) {
+          return b.wins - a.wins; // Sort by wins descending
+        } else if (b.points !== a.points) {
+          return b.points - a.points; // If wins are equal, sort by points descending
+        } else {
+          return a.losses - b.losses; // If points are also equal, sort by losses ascending
+        }
+      });
+  }, [standings, selectedEvent]);
+
   const filteredMatchResults = matchResults.filter(result => result.sport === selectedEvent);
 
   const isTeamEvent = teamBasedEvents.includes(selectedEvent);
@@ -142,6 +156,7 @@ export function EventContent({
               <TableCaption>{selectedEvent} Standings</TableCaption>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Rank</TableHead>
                   <TableHead>Team Name</TableHead>
                   <TableHead>Wins</TableHead>
                   <TableHead>Losses</TableHead>
@@ -151,6 +166,7 @@ export function EventContent({
               <TableBody>
                 {filteredStandings.map((team, index) => (
                   <TableRow key={index}>
+                    <TableCell>{index + 1}</TableCell>
                     <TableCell>{team.teamName}</TableCell>
                     <TableCell>{team.wins}</TableCell>
                     <TableCell>{team.losses}</TableCell>
