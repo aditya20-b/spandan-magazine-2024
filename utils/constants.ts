@@ -223,6 +223,23 @@ const eventDetails: EventDetails = {
     writeup:
       "Join us for an eclectic experience with high-energy rock anthems and powerful riffs from bands across the nation.",
     image: "/tinnitus.webp",
+     results: [
+      {
+        position: Positions.FIRST,
+        teamName: "ST. JOHNS",
+        college: "",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "VIT CHENNAI",
+        college: "",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "JIPMER",
+        college: "",
+      },
+        ]
   },
   "Dernier Cri: Fashion Show": {
     writeup:
@@ -784,6 +801,13 @@ const eventDetails: EventDetails = {
     writeup:
       "Step into a world of drama and storytelling as actors bring characters and scenes to life.",
     image: "/play.webp",
+        results: [
+      {
+        position: Positions.FIRST,
+        teamName: "SRM COLLEGE, CHENNAI",
+        college: "",
+      }
+        ]
   },
   "Pot Painting": {
     writeup:
@@ -875,6 +899,13 @@ const eventDetails: EventDetails = {
     writeup:
       "Take the stage with your team in a short, engaging performance that combines humor, drama, and creativity.",
     image: "/skit.webp", 
+      results: [
+      {
+        position: Positions.FIRST,
+        teamName: "JIPMER",
+        college: "",
+      }
+        ]
   },
 };
 const sportCategories: Record<string, SportCategory> = {
