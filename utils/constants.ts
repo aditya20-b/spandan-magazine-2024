@@ -201,6 +201,23 @@ const eventDetails: EventDetails = {
     writeup:
       "Showcase the rich tapestry of Indian music, from ghazals of the North to Carnatic melodies of the South.",
     image: "/alaap.webp",
+     results: [
+      {
+        position: Positions.FIRST,
+        teamName: "SMVEX",
+        college: "",
+      },
+      {
+        position: Positions.SECOND,
+        teamName: "PIMS",
+        college: "",
+      },
+      {
+        position: Positions.THIRD,
+        teamName: "JIPMER",
+        college: "",
+      },
+        ]
   },
   "Tinnitus: Western Band": {
     writeup:
